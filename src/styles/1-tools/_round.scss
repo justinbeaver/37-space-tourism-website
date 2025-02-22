@@ -1,0 +1,12 @@
+@use "sass:math";
+
+@function round($number, $decimals: 2) {
+  // Rounds to 2 decimals by default
+  $n: 1;
+  @if $decimals > 0 {
+    @for $i from 1 through $decimals {
+      $n: $n * 10;
+    }
+  }
+  @return math.div(math.round($number * $n), $n);
+}

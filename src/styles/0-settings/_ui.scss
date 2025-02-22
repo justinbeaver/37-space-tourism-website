@@ -1,0 +1,24 @@
+:root {
+  --opacity-disabled: 0.5;
+
+  --outline-focused: 1px solid var(--clr-primary-300);
+  --outline-offset-focused: 2px;
+
+  --modal-backdrop-color: hsl(0 0% 0% / 50%);
+
+  --overlay-tint-light: hsl(0 0% 100% / 60%);
+  --overlay-tint-color: hsl(0 0% 0% / 30%);
+
+  // --min-tap-target-height: 32px;
+  // @media (pointer: coarse) {
+  //   --min-tap-target-height: 48px;
+  // }
+
+  // --coarse-tap-height: 48px;
+  // --fine-tap-height: 32px;
+  // --heading-size: var(--fs-700);
+  // --sidebar-width: 300px;
+  // --gutter-spacing: 20px;
+  // --section-margin-bottom: 30px;
+  // --container-border-radius: 8px;
+}

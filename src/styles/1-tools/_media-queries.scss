@@ -1,0 +1,21 @@
+@use "@/styles/0-settings/breakpoints.module" as b;
+
+@use "./get-breakpoint-value" as *;
+
+// above or after
+@mixin above($breakpoint) {
+  $breakpoint-value: get-breakpoint-value(b.$breakpointsMap, $breakpoint);
+
+  @media (width > $breakpoint-value) {
+    @content;
+  }
+}
+
+// below or before
+@mixin below($breakpoint) {
+  $breakpoint-value: get-breakpoint-value(b.$breakpointsMap, $breakpoint);
+
+  @media (width < $breakpoint-value) {
+    @content;
+  }
+}

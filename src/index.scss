@@ -1,0 +1,18 @@
+@use "@/styles/0-settings/borders";
+@use "@/styles/0-settings/breakpoints.module";
+@use "@/styles/0-settings/colors";
+@use "@/styles/0-settings/fonts";
+@use "@/styles/0-settings/layout";
+@use "@/styles/0-settings/shadows";
+@use "@/styles/0-settings/spacing";
+@use "@/styles/0-settings/transitions";
+@use "@/styles/0-settings/z-index";
+@use "@/styles/0-settings/ui";
+
+@use "@/styles/2-generic/reset";
+
+@use "@/styles/3-elements/base";
+
+@use "@/styles/4-objects/wrapper";
+
+@use "@/styles/6-utilities/visually-hidden";

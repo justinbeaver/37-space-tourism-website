@@ -1,0 +1,20 @@
+:root {
+  // border width
+  --bw-thin: 1px;
+  --bw-thick: 2px;
+
+  // border style
+  // --bs-default: solid;
+  // --bs-primary: solid;
+  --bs-base: solid;
+
+  // border color
+  --bc-light: var(--clr-neutral-500);
+  --bc-medium: var(--clr-neutral-500);
+  --bc-dark: var(--clr-neutral-500);
+
+  // border radius
+  --br-base: var(--sp-300);
+  --br-pill: 999rem;
+  --br-circle: 50%;
+}

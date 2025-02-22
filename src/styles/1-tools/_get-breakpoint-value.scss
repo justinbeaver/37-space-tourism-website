@@ -1,0 +1,10 @@
+@use "sass:map";
+
+@function get-breakpoint-value($breakpointsMap, $breakpoint-name) {
+  $breakpoint-value: map.get($breakpointsMap, $breakpoint-name);
+
+  @if $breakpoint-value == null {
+    @error "Breakpoint '#{$breakpoint-name}' not found in the '$breakpoints' map.";
+  }
+  @return $breakpoint-value;
+}

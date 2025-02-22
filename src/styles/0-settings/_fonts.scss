@@ -1,0 +1,60 @@
+:root {
+  --ff-primary: "Barlow", serif;
+  --ff-secondary: "Barlow Condensed", serif;
+  --ff-accent: "Bellefair", serif;
+
+  // --fs-100: 0.75rem; // 12px
+  // --fs-200: 0.875rem; // 14px
+  // --fs-300: 1rem; // 16px
+  // --fs-400: 1.125rem; // 18px
+  // --fs-500: 1.25rem; // 20px
+  // --fs-600: 1.375rem; // 22px
+  // --fs-700: 1.5rem; // 24px
+  // --fs-800: 1.625rem; // 26px
+  // --fs-900: 1.75rem; // 28px
+  // --fs-1000: 1.875rem; // 30px
+  // --fs-1100: 2rem; // 32px
+
+  --fs-100: clamp(0.6944rem, 0.6871rem + 0.0365vw, 0.72rem);
+  --fs-200: clamp(0.8333rem, 0.8143rem + 0.0952vw, 0.9rem);
+  --fs-300: clamp(1rem, 0.9643rem + 0.1786vw, 1.125rem);
+  --fs-400: clamp(1.2rem, 1.1411rem + 0.2946vw, 1.4063rem);
+  --fs-500: clamp(1.44rem, 1.3492rem + 0.454vw, 1.7578rem);
+  --fs-600: clamp(1.728rem, 1.5939rem + 0.6704vw, 2.1973rem);
+  --fs-700: clamp(2.0736rem, 1.8813rem + 0.9614vw, 2.7466rem);
+  --fs-800: clamp(2.4883rem, 2.2183rem + 1.3499vw, 3.4332rem);
+  --fs-900: clamp(2.986rem, 2.613rem + 1.8651vw, 4.2915rem);
+
+  --fw-regular: 400;
+  --fw-semi-bold: 500;
+  --fw-bold: 700;
+
+  // Line height
+  --lh-base: 1.5;
+  --lh-heading: 1.2;
+
+  --lh-sm: 1.2;
+  --lh-md: 1.7;
+  // --lh-heading: var(--lh-sm);
+
+  // Letter spacing
+  --ls-md: 2px;
+  --ls-lg: 4px;
+}
+
+// :root {
+//   // Kevin Powell
+
+// --ff-serif: "Bellefair", serif;
+// --ff-sans-cond: "Barlow Condensed", sans-serif;
+// --ff-sans-normal: "Barlow", sans-serif;
+
+//   --fs-200: 0.875rem;
+//   --fs-300: 1rem;
+//   --fs-400: 1.125rem;
+//   --fs-500: 1.75rem;
+//   --fs-600: 2rem;
+//   --fs-700: 3.5rem;
+//   --fs-800: 6.25rem;
+//   --fs-900: 9.375rem;
+// }

@@ -1,0 +1,56 @@
+// Make sizing simpler
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Remove default spacing
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+// Remove list styles
+// ul[role="list"],
+// ol[role="list"] {
+//     list-style: none;
+// }
+
+ul {
+  list-style: none;
+}
+
+// Set defaults for images
+img,
+picture,
+// svg,
+video {
+  display: block;
+  // vertical-align: middle;
+  max-width: 100%;
+  // height: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-style: italic;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// Remove animation for people who've turned them off
+// @media (prefers-reduced-motion: reduce) {
+//   *,
+//   *::before,
+//   *::after {
+//     animation-duration: 0.01ms !important;
+//     animation-iteration-count: 1 !important;
+//     transition-duration: 0.01ms !important;
+//     scroll-behavior: auto !important;
+//   }
+// }
