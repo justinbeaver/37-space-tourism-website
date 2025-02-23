@@ -1,0 +1,8 @@
+{
+  "nav": [
+    { "label": "Home", "href": "#" },
+    { "label": "Destination", "href": "#" },
+    { "label": "Crew", "href": "#" },
+    { "label": "Technology", "href": "#" }
+  ]
+}
