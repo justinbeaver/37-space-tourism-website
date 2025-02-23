@@ -1,0 +1,20 @@
+.header {
+  font-size: var(--fs-300);
+}
+
+.nav {
+  display: flex;
+  justify-content: end;
+  padding-inline: var(--sp-700);
+  min-height: 70px;
+  background-color: rgba(255, 255, 255, 0.119);
+}
+
+.list {
+  display: flex;
+  gap: var(--sp-400);
+}
+
+.listItem {
+  display: flex;
+}

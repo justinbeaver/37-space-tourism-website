@@ -1,5 +1,13 @@
+import Navbar from "@/components/Navbar/Navbar";
+// import Home from "@/pages/Home/Home";
+
 function App() {
-  return <div>App</div>;
+  return (
+    <>
+      <Navbar />
+      {/* <Home /> */}
+    </>
+  );
 }
 
 export default App;
