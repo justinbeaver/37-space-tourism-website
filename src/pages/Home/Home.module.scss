@@ -1,0 +1,99 @@
+@use "@/styles/1-tools/media-queries" as *;
+
+.page {
+  --_background-image: url("@/assets/home/background-home-mobile.jpg");
+
+  display: grid;
+  min-height: 100vh;
+  padding-block-start: var(--navbar-min-height);
+  background-image: var(--_background-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  // background-position: bottom;
+  background-size: cover;
+
+  @include above(sm) {
+    --_background-image: url("@/assets/home/background-home-tablet.jpg");
+  }
+
+  @include above(lg) {
+    --_background-image: url("@/assets/home/background-home-desktop.jpg");
+  }
+}
+
+.content {
+  --_padding-block: var(--wrapper-padding-inline);
+
+  display: grid;
+  grid-template-rows: auto 1fr;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+  padding-block: var(--_padding-block);
+
+  @include above(sm) {
+    --_padding-block: 8rem;
+
+    // grid-template-rows: 1fr 1fr;
+    align-items: end;
+    row-gap: var(--sp-900);
+  }
+
+  @include above(lg) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+
+    > *:nth-child(2) {
+      justify-self: end;
+    }
+  }
+}
+
+.header {
+  color: var(--clr-primary-300);
+  font-size: var(--fs-300);
+  text-align: center;
+
+  @include above(lg) {
+    text-align: start;
+  }
+}
+
+.title {
+  --_gap: var(--sp-300);
+
+  display: grid;
+  gap: var(--_gap);
+  margin-block-end: var(--_gap);
+  font-family: var(--ff-secondary);
+  letter-spacing: var(--ls-md);
+  text-transform: uppercase;
+
+  @include above(sm) {
+    font-size: var(--fs-500);
+  }
+}
+
+.emphasized {
+  --_font-size: 5rem;
+
+  color: var(--clr-neutral-100);
+  font-family: var(--ff-accent);
+  font-size: var(--_font-size);
+  letter-spacing: normal; // Resets title's spacing
+
+  @include above(sm) {
+    --_font-size: 8rem;
+  }
+}
+
+.subtitle {
+  max-width: 35ch;
+  font-family: var(--ff-primary);
+  line-height: var(--lg-lg);
+  text-wrap: pretty;
+
+  @include above(sm) {
+    max-width: 55ch;
+  }
+}
