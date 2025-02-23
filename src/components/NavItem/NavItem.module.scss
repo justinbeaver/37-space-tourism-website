@@ -1,0 +1,44 @@
+.navItem {
+  --_underline-thickness: 2px; // Sets underline height
+  --_underline-offset: 0.3em;
+  --_underline-color: transparent; // Sets default not hovered / not active color
+  --_underline-color-active: var(--clr-neutral-100);
+  --_underline-color-hover: hsl(
+    from var(--_underline-color-active) h s l / 50%
+  );
+
+  display: inline-flex;
+  align-items: center; // Aligns text vertically
+  gap: 0.5em;
+  color: var(--clr-neutral-100);
+  font-weight: var(--fw-regular);
+  letter-spacing: var(--ls-md);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color var(--ts-medium);
+
+  &__active {
+    --_underline-color: var(--_underline-color-active);
+  }
+
+  &:not(&__active) {
+    &:hover,
+    &:focus-visible {
+      --_underline-color: var(
+        --_underline-color-hover
+      ); // Changes underline color only if the item is not active
+    }
+  }
+
+  &__underlineBottom {
+    padding-block: var(--_underline-offset);
+    border-top: var(--_underline-thickness) solid transparent; // Adds transparent border to the opposite side to have equal space on both sides
+    border-bottom: var(--_underline-thickness) solid var(--_underline-color);
+  }
+
+  &__underlineRight {
+    padding-inline: var(--_underline-offset);
+    border-left: var(--_underline-thickness) solid transparent; // Adds transparent border to the opposite side to have equal space on both sides
+    border-right: var(--_underline-thickness) solid var(--_underline-color);
+  }
+}
