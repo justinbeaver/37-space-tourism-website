@@ -1,12 +1,15 @@
 import NavItem from "@/components/NavItem/NavItem";
+import { useNavbarHeight } from "./Navbar.hooks";
 import Logo from "@/assets/shared/logo.svg?react";
 import content from "./Navbar.content.json";
 
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
+  const { navbarRef } = useNavbarHeight();
+
   return (
-    <header className={s.header}>
+    <header ref={navbarRef} className={s.header}>
       <Logo className={s.logo} />
       <div className={s.decorationLine}></div>
       <nav className={s.nav}>
