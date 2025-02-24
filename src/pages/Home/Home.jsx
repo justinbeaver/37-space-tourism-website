@@ -1,18 +1,19 @@
 import Btn from "@/components/Btn/Btn";
+import PageBackground from "@/components/PageBackground/PageBackground";
 import useMediaQueries from "@/hooks/useMediaQueries";
 
 import s from "./Home.module.scss";
 
 const Home = () => {
   return (
-    <div className={s.page}>
+    <PageBackground variant="home">
       <div className="wrapper">
         <div className={s.content}>
           <Header />
           <ExploreButton />
         </div>
       </div>
-    </div>
+    </PageBackground>
   );
 };
 export default Home;

@@ -1,26 +1,5 @@
 @use "@/styles/1-tools/media-queries" as *;
 
-.page {
-  --_background-image: url("@/assets/home/background-home-mobile.jpg");
-
-  display: grid;
-  min-height: 100vh;
-  padding-block-start: var(--navbar-min-height);
-  background-image: var(--_background-image);
-  background-repeat: no-repeat;
-  background-position: center;
-  // background-position: bottom;
-  background-size: cover;
-
-  @include above(sm) {
-    --_background-image: url("@/assets/home/background-home-tablet.jpg");
-  }
-
-  @include above(lg) {
-    --_background-image: url("@/assets/home/background-home-desktop.jpg");
-  }
-}
-
 .content {
   --_padding-block: var(--wrapper-padding-inline);
 
