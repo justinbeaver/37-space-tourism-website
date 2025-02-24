@@ -7,6 +7,7 @@
     from var(--_underline-color-active) h s l / 50%
   );
 
+  all: unset;
   display: inline-flex;
   align-items: center; // Aligns text vertically
   gap: 0.5em;
@@ -16,6 +17,7 @@
   text-decoration: none;
   text-transform: uppercase;
   transition: border-color var(--ts-medium);
+  cursor: pointer;
 
   &__active {
     --_underline-color: var(--_underline-color-active);

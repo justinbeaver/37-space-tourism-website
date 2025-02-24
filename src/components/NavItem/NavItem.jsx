@@ -14,14 +14,16 @@ const NavItem = ({
   children,
   ...rest
 }) => {
+  const ElementTag = href ? "a" : "button";
+
   return (
-    <a
+    <ElementTag
       className={navItemClass({ underline, active: isActive })}
       href={href}
       {...rest}
     >
       {children}
-    </a>
+    </ElementTag>
   );
 };
 export default NavItem;
