@@ -1,0 +1,59 @@
+@use "@/styles/1-tools/media-queries" as *;
+
+.content {
+  display: grid;
+
+  @include above(lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.overview {
+  text-align: center;
+
+  @include above(lg) {
+    text-align: start;
+  }
+}
+
+.nav {
+  font-family: var(--ff-secondary);
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-400);
+}
+
+.planetTitle {
+  --_font-size: var(--sp-900);
+
+  font-family: var(--ff-accent);
+  font-size: var(--_font-size);
+  text-transform: uppercase;
+}
+
+.planetDescription {
+  color: var(--clr-primary-300);
+}
+
+.meta {
+  display: grid;
+
+  @include above(sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.metaTitle {
+  color: var(--clr-primary-300);
+  font-family: var(--ff-secondary);
+  letter-spacing: var(--ls-md);
+}
+
+.metaDescription {
+  font-family: var(--ff-accent);
+  font-size: var(--fs-500);
+  text-transform: uppercase;
+}
