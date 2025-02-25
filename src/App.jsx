@@ -6,7 +6,7 @@ import { MediaQueriesProvider } from "./context/mediaQueriesContext";
 function App() {
   return (
     <MediaQueriesProvider>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </MediaQueriesProvider>
   );
 }
