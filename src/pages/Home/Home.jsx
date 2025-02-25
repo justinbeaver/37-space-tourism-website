@@ -1,6 +1,6 @@
 import Btn from "@/components/Btn/Btn";
 import PageBackground from "@/components/PageBackground/PageBackground";
-import useMediaQueries from "@/hooks/useMediaQueries";
+import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 
 import s from "./Home.module.scss";
 
@@ -36,7 +36,7 @@ const Header = () => {
 };
 
 const ExploreButton = () => {
-  const { isSm } = useMediaQueries();
+  const { isSm } = useMediaQueriesContext();
 
   return (
     <Btn variant="primary" size={isSm ? "lg" : "md"}>
