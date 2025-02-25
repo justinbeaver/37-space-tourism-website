@@ -16,7 +16,7 @@ const Navbar = () => {
         <ul className={s.list}>
           {content.nav.map(({ label, href }, index) => (
             <li key={index} className={s.listItem}>
-              <NavItem href={href} isActive={index === 0}>
+              <NavItem to={href} isActive={index === 0}>
                 <span>{String(index).padStart(2, "0")}</span>
                 {label}
               </NavItem>
