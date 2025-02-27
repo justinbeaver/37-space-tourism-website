@@ -9,6 +9,7 @@ import {
 
 import NavItem from "@/components/NavItem/NavItem";
 import PageBackground from "@/components/PageBackground/PageBackground";
+import ImageSlider from "@/components/ImageSlider/ImageSlider";
 
 import s from "./Destination.module.scss";
 
@@ -89,13 +90,21 @@ export const Content = () => {
   const { destinations } = useOutletContext();
   // console.log(destinations, "content");
 
-  const currentPlanet = destinations.find(
+  const currentPlanetIndex = destinations.findIndex(
     (destination) => destination.name === planetName
   );
 
   return (
     <div className={s.content}>
-      <Picture planet={currentPlanet} />
+      <div>
+        <ImageSlider
+          images={destinations.map((item) => ({
+            alt: `picture of the ${item.name}`,
+            urls: { png: item.images.png, webp: item.images.webp },
+          }))}
+          selectedImageIndex={currentPlanetIndex}
+        />
+      </div>
       <div>
         <Nav
           navItems={destinations.map((item) => ({
@@ -103,22 +112,9 @@ export const Content = () => {
             slug: item.name,
           }))}
         />
-        <Overview planet={currentPlanet} />
+        <Overview planet={destinations[currentPlanetIndex]} />
       </div>
     </div>
-  );
-};
-
-const Picture = ({ planet }) => {
-  const { name, images } = planet;
-
-  // const images = [{ alt: "", urls: { png: "", webp: "" } }];
-
-  return (
-    <picture>
-      <source srcSet={images.webp} type="image/webp" />
-      <img src={images.png} alt={`picture of the ${name}`} />
-    </picture>
   );
 };
 
