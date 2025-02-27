@@ -8,14 +8,6 @@
   }
 }
 
-.overview {
-  text-align: center;
-
-  @include above(lg) {
-    text-align: start;
-  }
-}
-
 .nav {
   font-family: var(--ff-secondary);
 }

@@ -1,16 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import {
+  Outlet,
+  useParams,
+  Navigate,
+  useOutletContext,
+} from "react-router-dom";
 
 import NavItem from "@/components/NavItem/NavItem";
 import PageBackground from "@/components/PageBackground/PageBackground";
 
 import s from "./Destination.module.scss";
 
-const destinations = [
+const data = [
   {
     name: "Moon",
     images: {
-      png: "src/assets/destination/image-moon.png",
-      webp: "src/assets/destination/image-moon.webp",
+      png: "/src/assets/destination/image-moon.png",
+      webp: "/src/assets/destination/image-moon.webp",
     },
     description:
       "See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",
@@ -20,8 +27,8 @@ const destinations = [
   {
     name: "Mars",
     images: {
-      png: "src/assets/destination/image-mars.png",
-      webp: "src/assets/destination/image-mars.webp",
+      png: "/src/assets/destination/image-mars.png",
+      webp: "/src/assets/destination/image-mars.webp",
     },
     description:
       "Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!",
@@ -31,8 +38,8 @@ const destinations = [
   {
     name: "Europa",
     images: {
-      png: "src/assets/destination/image-europa.png",
-      webp: "src/assets/destination/image-europa.webp",
+      png: "/src/assets/destination/image-europa.png",
+      webp: "/src/assets/destination/image-europa.webp",
     },
     description:
       "The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.",
@@ -42,8 +49,8 @@ const destinations = [
   {
     name: "Titan",
     images: {
-      png: "src/assets/destination/image-titan.png",
-      webp: "src/assets/destination/image-titan.webp",
+      png: "/src/assets/destination/image-titan.png",
+      webp: "/src/assets/destination/image-titan.webp",
     },
     description:
       "The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.",
@@ -53,58 +60,101 @@ const destinations = [
 ];
 
 const Destination = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [destinations, setDestinations] = useState(data);
 
-  const destination = destinations[activeIndex];
+  const { planetName } = useParams();
+
+  if (!planetName) {
+    // const firstPlanet = destinations[0]?.name || null;
+
+    return <Navigate to={destinations[0].name} replace />;
+  }
 
   return (
     <PageBackground variant="destination">
       <div className="wrapper">
         <section>
           <h1>pick your destination</h1>
-          <div className={s.content}>
-            <picture>
-              <source srcSet={destination.images.webp} type="image/webp" />
-              <source srcSet={destination.images.png} type="image/png" />
-              <img
-                src={destination.images.png}
-                alt={`picture of the ${destination.name}`}
-              />
-            </picture>
-            <div className={s.overview}>
-              <nav className={s.nav}>
-                <ul className={s.navList}>
-                  {destinations.map(({ name }, index) => (
-                    <li key={index}>
-                      <NavItem
-                        isActive={activeIndex === index}
-                        onClick={() => setActiveIndex(index)}
-                      >
-                        {name}
-                      </NavItem>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-              <div>
-                <h2 className={s.planetTitle}>{destination.name}</h2>
-                <p className={s.planetDescription}>{destination.description}</p>
-              </div>
-              <div className={s.meta}>
-                <div>
-                  <h3 className={s.metaTitle}>avg. distance</h3>
-                  <p className={s.metaDescription}>{destination.distance}</p>
-                </div>
-                <div>
-                  <h3 className={s.metaTitle}>est. travel time</h3>
-                  <p className={s.metaDescription}>{destination.travel}</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Outlet context={{ destinations }} />
         </section>
       </div>
     </PageBackground>
   );
 };
 export default Destination;
+
+export const Content = () => {
+  const { planetName } = useParams();
+
+  const { destinations } = useOutletContext();
+  // console.log(destinations, "content");
+
+  const currentPlanet = destinations.find(
+    (destination) => destination.name === planetName
+  );
+
+  return (
+    <div className={s.content}>
+      <Picture planet={currentPlanet} />
+      <div>
+        <Nav
+          navItems={destinations.map((item) => ({
+            label: item.name,
+            slug: item.name,
+          }))}
+        />
+        <Overview planet={currentPlanet} />
+      </div>
+    </div>
+  );
+};
+
+const Picture = ({ planet }) => {
+  const { name, images } = planet;
+
+  // const images = [{ alt: "", urls: { png: "", webp: "" } }];
+
+  return (
+    <picture>
+      <source srcSet={images.webp} type="image/webp" />
+      <img src={images.png} alt={`picture of the ${name}`} />
+    </picture>
+  );
+};
+
+const Nav = ({ navItems }) => {
+  return (
+    <nav className={s.nav}>
+      <ul className={s.navList}>
+        {navItems.map(({ label, slug }) => (
+          <li key={slug}>
+            <NavItem to={`/destination/${slug}`}>{label}</NavItem>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+};
+
+const Overview = ({ planet }) => {
+  const { name, description, distance, travel } = planet;
+
+  return (
+    <div>
+      <div>
+        <h2 className={s.planetTitle}>{name}</h2>
+        <p className={s.planetDescription}>{description}</p>
+      </div>
+      <div className={s.meta}>
+        <div>
+          <h3 className={s.metaTitle}>avg. distance</h3>
+          <p className={s.metaDescription}>{distance}</p>
+        </div>
+        <div>
+          <h3 className={s.metaTitle}>est. travel time</h3>
+          <p className={s.metaDescription}>{travel}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
