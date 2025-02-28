@@ -40,8 +40,8 @@ const ImageSlider = ({
 export default ImageSlider;
 
 ImageSlider.propTypes = {
-  direction: PropTypes.oneOf(config.variants.direction),
-  transition: PropTypes.oneOf(config.variants.transition),
+  direction: PropTypes.oneOf(Object.keys(config.variants.direction)),
+  transition: PropTypes.oneOf(Object.keys(config.variants.transition)),
   images: PropTypes.arrayOf(
     PropTypes.shape({
       alt: PropTypes.string.isRequired,
