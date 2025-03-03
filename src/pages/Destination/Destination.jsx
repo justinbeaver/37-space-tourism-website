@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import {
   Outlet,
-  useParams,
   Navigate,
+  useParams,
+  useLoaderData,
   useOutletContext,
 } from "react-router-dom";
 
@@ -13,62 +12,36 @@ import ImageSlider from "@/components/ImageSlider/ImageSlider";
 
 import s from "./Destination.module.scss";
 
-const data = [
-  {
-    name: "Moon",
-    images: {
-      png: "/src/assets/destination/image-moon.png",
-      webp: "/src/assets/destination/image-moon.webp",
-    },
-    description:
-      "See our planet as you’ve never seen it before. A perfect relaxing trip away to help regain perspective and come back refreshed. While you’re there, take in some history by visiting the Luna 2 and Apollo 11 landing sites.",
-    distance: "384,400 km",
-    travel: "3 days",
-  },
-  {
-    name: "Mars",
-    images: {
-      png: "/src/assets/destination/image-mars.png",
-      webp: "/src/assets/destination/image-mars.webp",
-    },
-    description:
-      "Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons, the tallest planetary mountain in our solar system. It’s two and a half times the size of Everest!",
-    distance: "225 mil. km",
-    travel: "9 months",
-  },
-  {
-    name: "Europa",
-    images: {
-      png: "/src/assets/destination/image-europa.png",
-      webp: "/src/assets/destination/image-europa.webp",
-    },
-    description:
-      "The smallest of the four Galilean moons orbiting Jupiter, Europa is a winter lover’s dream. With an icy surface, it’s perfect for a bit of ice skating, curling, hockey, or simple relaxation in your snug wintery cabin.",
-    distance: "628 mil. km",
-    travel: "3 years",
-  },
-  {
-    name: "Titan",
-    images: {
-      png: "/src/assets/destination/image-titan.png",
-      webp: "/src/assets/destination/image-titan.webp",
-    },
-    description:
-      "The only moon known to have a dense atmosphere other than Earth, Titan is a home away from home (just a few hundred degrees colder!). As a bonus, you get striking views of the Rings of Saturn.",
-    distance: "1.6 bil. km",
-    travel: "7 years",
-  },
-];
+// eslint-disable-next-line react-refresh/only-export-components
+export const loader = async () => {
+  const url = "/destinations.json";
+
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    const response = await fetch(url);
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
 
 const Destination = () => {
-  const [destinations, setDestinations] = useState(data);
-
+  const destinations = useLoaderData();
   const { planetName } = useParams();
 
   if (!planetName) {
-    // const firstPlanet = destinations[0]?.name || null;
-
     return <Navigate to={destinations[0].name} replace />;
+  }
+
+  const currentPlanetIndex = destinations.findIndex(
+    (destination) => destination.name === planetName
+  );
+
+  if (currentPlanetIndex === -1) {
+    throw new Error("Planet now found");
   }
 
   return (
@@ -76,7 +49,7 @@ const Destination = () => {
       <div className="wrapper">
         <section>
           <h1>pick your destination</h1>
-          <Outlet context={{ destinations }} />
+          <Outlet context={{ destinations, currentPlanetIndex }} />
         </section>
       </div>
     </PageBackground>
@@ -85,46 +58,41 @@ const Destination = () => {
 export default Destination;
 
 export const Content = () => {
-  const { planetName } = useParams();
-
-  const { destinations } = useOutletContext();
-  // console.log(destinations, "content");
-
-  const currentPlanetIndex = destinations.findIndex(
-    (destination) => destination.name === planetName
-  );
-
   return (
     <div className={s.content}>
       <div>
-        <ImageSlider
-          images={destinations.map((item) => ({
-            alt: `picture of the ${item.name}`,
-            urls: { png: item.images.png, webp: item.images.webp },
-          }))}
-          selectedImageIndex={currentPlanetIndex}
-        />
+        <Picture />
       </div>
       <div>
-        <Nav
-          navItems={destinations.map((item) => ({
-            label: item.name,
-            slug: item.name,
-          }))}
-        />
-        <Overview planet={destinations[currentPlanetIndex]} />
+        <Nav />
+        <Overview />
       </div>
     </div>
   );
 };
 
-const Nav = ({ navItems }) => {
+const Picture = () => {
+  const { destinations, currentPlanetIndex } = useOutletContext();
+
+  const images = destinations.map(({ name, images }) => ({
+    alt: `picture of the ${name}`,
+    urls: { png: images.png, webp: images.webp },
+  }));
+
+  return (
+    <ImageSlider images={images} selectedImageIndex={currentPlanetIndex} />
+  );
+};
+
+const Nav = () => {
+  const { destinations } = useOutletContext();
+
   return (
     <nav className={s.nav}>
       <ul className={s.navList}>
-        {navItems.map(({ label, slug }) => (
-          <li key={slug}>
-            <NavItem to={`/destination/${slug}`}>{label}</NavItem>
+        {destinations.map(({ name }) => (
+          <li key={name}>
+            <NavItem to={`/destination/${name}`}>{name}</NavItem>
           </li>
         ))}
       </ul>
@@ -132,8 +100,11 @@ const Nav = ({ navItems }) => {
   );
 };
 
-const Overview = ({ planet }) => {
-  const { name, description, distance, travel } = planet;
+const Overview = () => {
+  const { destinations, currentPlanetIndex } = useOutletContext();
+
+  const { name, description, distance, travel } =
+    destinations[currentPlanetIndex];
 
   return (
     <div>
