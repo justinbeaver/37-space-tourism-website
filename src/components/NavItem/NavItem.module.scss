@@ -1,3 +1,5 @@
+@use "@/styles/2-generic/animations";
+
 .navItem {
   --_underline-thickness: 3px; // Sets underline height
   --_underline-offset: 0.3em;
@@ -30,6 +32,10 @@
         --_underline-color-hover
       ); // Changes underline color only if the item is not active
     }
+  }
+
+  &__pending {
+    animation: blinker 1s linear infinite;
   }
 
   &__underlineBottom {

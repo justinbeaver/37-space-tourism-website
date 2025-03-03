@@ -9,6 +9,9 @@ const config = {
     active: {
       true: s.navItem__active,
     },
+    pending: {
+      true: s.navItem__pending,
+    },
   },
 };
 export default config;

@@ -12,8 +12,8 @@ const NavItem = ({ to, underline = "bottom", children, ...rest }) => {
   return (
     <NavLink
       to={to}
-      className={({ isActive }) =>
-        navItemClass({ underline, active: isActive })
+      className={({ isActive, isPending }) =>
+        navItemClass({ underline, active: isActive, pending: isPending })
       }
       {...rest}
     >
