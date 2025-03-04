@@ -112,6 +112,11 @@ const Overview = () => {
   const { name, description, distance, travel } =
     destinations[currentPlanetIndex];
 
+  const meta = [
+    { title: "avg. distance", description: distance },
+    { title: "est. travel time", description: travel },
+  ];
+
   return (
     <div className={s.overview}>
       <div>
@@ -120,14 +125,12 @@ const Overview = () => {
       </div>
       <div className={`decoration-line ${s.decorationLine}`} />
       <div className={s.meta}>
-        <div>
-          <h3 className={s.metaTitle}>avg. distance</h3>
-          <p className={s.metaDescription}>{distance}</p>
-        </div>
-        <div>
-          <h3 className={s.metaTitle}>est. travel time</h3>
-          <p className={s.metaDescription}>{travel}</p>
-        </div>
+        {meta.map(({ title, description }) => (
+          <div key={title}>
+            <h3 className={s.metaTitle}>{title}</h3>
+            <p className={s.metaDescription}>{description}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
