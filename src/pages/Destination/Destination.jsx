@@ -48,7 +48,9 @@ const Destination = () => {
     <PageBackground variant="destination">
       <div className="wrapper">
         <section>
-          <h1>pick your destination</h1>
+          <h1 className={s.title}>
+            <span className={s.num}>01</span>pick your destination
+          </h1>
           <Outlet context={{ destinations, currentPlanetIndex }} />
         </section>
       </div>
@@ -63,7 +65,7 @@ export const Content = () => {
       <div>
         <Picture />
       </div>
-      <div>
+      <div className={s.overviewWrapper}>
         <Nav />
         <Overview />
       </div>
@@ -80,7 +82,11 @@ const Picture = () => {
   }));
 
   return (
-    <ImageSlider images={images} selectedImageIndex={currentPlanetIndex} />
+    <ImageSlider
+      className={s.imageSlider}
+      images={images}
+      selectedImageIndex={currentPlanetIndex}
+    />
   );
 };
 
@@ -107,11 +113,12 @@ const Overview = () => {
     destinations[currentPlanetIndex];
 
   return (
-    <div>
+    <div className={s.overview}>
       <div>
         <h2 className={s.planetTitle}>{name}</h2>
         <p className={s.planetDescription}>{description}</p>
       </div>
+      <div className={`decoration-line ${s.decorationLine}`} />
       <div className={s.meta}>
         <div>
           <h3 className={s.metaTitle}>avg. distance</h3>
