@@ -9,6 +9,7 @@ import {
 import NavItem from "@/components/NavItem/NavItem";
 import PageBackground from "@/components/PageBackground/PageBackground";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
+import fetchData from "@/utils/fetchData";
 
 import s from "./Destination.module.scss";
 
@@ -16,16 +17,9 @@ import s from "./Destination.module.scss";
 export const loader = async () => {
   const url = "/destinations.json";
 
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+  const result = await fetchData(url);
 
-    const response = await fetch(url);
-    const result = await response.json();
-
-    return result;
-  } catch (error) {
-    throw new Error(error);
-  }
+  return await result;
 };
 
 const Destination = () => {
@@ -78,7 +72,10 @@ const Picture = () => {
 
   const images = destinations.map(({ name, images }) => ({
     alt: `picture of the ${name}`,
-    urls: { png: images.png, webp: images.webp },
+    urls: {
+      default: images.png,
+      webp: images.webp,
+    },
   }));
 
   return (
