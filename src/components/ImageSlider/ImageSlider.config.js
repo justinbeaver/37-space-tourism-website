@@ -10,6 +10,10 @@ const config = {
       none: s.imageSlider__transitionNone,
       slow: s.imageSlider__transitionSlow,
     },
+    imageFit: {
+      contain: s.imageSlider__contain,
+      cover: s.imageSlider__cover,
+    },
   },
 };
 export default config;

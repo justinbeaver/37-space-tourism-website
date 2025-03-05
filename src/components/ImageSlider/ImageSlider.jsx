@@ -10,7 +10,8 @@ const imageSliderClass = cva(s.imageSlider, config);
 const ImageSlider = ({
   direction = "horizontal",
   transition = "slow",
-  images,
+  imageFit = "contain",
+  images = [],
   selectedImageIndex = 0,
   className = "",
 }) => {
@@ -21,7 +22,11 @@ const ImageSlider = ({
 
   return (
     <div
-      className={`${imageSliderClass({ direction, transition })} ${className}`}
+      className={`${imageSliderClass({
+        direction,
+        transition,
+        imageFit,
+      })} ${className}`}
       style={{ "--_currentImageIndex": currentImageIndex }}
     >
       {images.map((item, index) => (
@@ -30,8 +35,10 @@ const ImageSlider = ({
           className={s.picture}
           aria-hidden={index !== currentImageIndex}
         >
-          <source srcSet={item.urls.webp} type="image/webp" />
-          <img className={s.img} src={item.urls.png} alt={item.alt} />
+          {item.urls.webp && (
+            <source srcSet={item.urls.webp} type="image/webp" />
+          )}
+          <img className={s.img} src={item.urls.default} alt={item.alt} />
         </picture>
       ))}
     </div>
@@ -46,7 +53,7 @@ ImageSlider.propTypes = {
     PropTypes.shape({
       alt: PropTypes.string.isRequired,
       urls: PropTypes.shape({
-        png: PropTypes.string.isRequired,
+        default: PropTypes.string.isRequired,
         webp: PropTypes.string.isRequired,
       }).isRequired,
     })
