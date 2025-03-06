@@ -7,8 +7,12 @@ import s from "./PageBackground.module.scss";
 
 const pageBackgroundClass = cva(s.page, config);
 
-const PageBackground = ({ variant, children }) => {
-  return <div className={pageBackgroundClass({ variant })}>{children}</div>;
+const PageBackground = ({ variant, children, ...rest }) => {
+  return (
+    <div className={pageBackgroundClass({ variant })} {...rest}>
+      {children}
+    </div>
+  );
 };
 export default PageBackground;
 
