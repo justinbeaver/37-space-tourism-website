@@ -1,3 +1,5 @@
+@use "@/styles/1-tools/media-queries" as *;
+
 :root {
   --ff-primary: "Barlow", serif;
   --ff-secondary: "Barlow Condensed", serif;
@@ -30,6 +32,7 @@
   --fw-bold: 600;
 
   // Line height
+  --lh-default: normal;
   --lh-base: 1.5;
   --lg-lg: 1.7;
   --lh-heading: 1.2;
@@ -39,6 +42,7 @@
   // --lh-heading: var(--lh-sm);
 
   // Letter spacing
+  --ls-default: normal;
   --ls-md: 2px;
   --ls-lg: 4px;
 }
@@ -59,3 +63,87 @@
 //   --fs-800: 6.25rem;
 //   --fs-900: 9.375rem;
 // }
+
+:root {
+  // Font family
+  --ff-preset-1: var(--ff-accent);
+  --ff-preset-2: var(--ff-accent);
+  --ff-preset-3: var(--ff-accent);
+  --ff-preset-4: var(--ff-accent);
+  --ff-preset-5: var(--ff-secondary);
+  --ff-preset-6: var(--ff-secondary);
+  --ff-preset-7: var(--ff-secondary);
+  --ff-preset-8: var(--ff-secondary);
+  --ff-preset-9: var(--ff-primary);
+
+  // Font size
+  --fs-preset-1: 80px;
+  --fs-preset-2: 56px;
+  --fs-preset-3: 24px;
+  --fs-preset-4: 18px;
+  --fs-preset-5: 20px;
+  --fs-preset-6: 16px;
+  --fs-preset-7: 14px;
+  --fs-preset-8: 14px;
+  --fs-preset-9: 15px;
+
+  // Font weight
+  --fw-preset-1: var(--fw-regular);
+  --fw-preset-2: var(--fw-regular);
+  --fw-preset-3: var(--fw-regular);
+  --fw-preset-4: var(--fw-regular);
+  --fw-preset-5: var(--fw-regular);
+  --fw-preset-6: var(--fw-regular);
+  --fw-preset-7: var(--fw-regular);
+  --fw-preset-8: var(--fw-regular);
+  --fw-preset-9: var(--fw-regular);
+
+  // Line height
+  --lh-preset-1: var(--lh-default);
+  --lh-preset-2: var(--lh-default);
+  --lh-preset-3: var(--lh-default);
+  --lh-preset-4: var(--lh-default);
+  --lh-preset-5: var(--lh-default);
+  --lh-preset-6: var(--lh-default);
+  --lh-preset-7: var(--lh-default);
+  --lh-preset-8: var(--lh-default);
+  --lh-preset-9: 180%;
+
+  // Letter spacing
+  --ls-preset-1: var(--ls-default);
+  --ls-preset-2: var(--ls-default);
+  --ls-preset-3: var(--ls-default);
+  --ls-preset-4: var(--ls-default);
+  --ls-preset-5: 15%;
+  --ls-preset-6: 15%;
+  --ls-preset-7: 2px;
+  --ls-preset-8: 15%;
+  --ls-preset-9: var(--ls-default);
+
+  @include above(md) {
+    // Font size
+    --fs-preset-2: 80px;
+    --fs-preset-3: 40px;
+    --fs-preset-4: 24px;
+    --fs-preset-9: 16px;
+  }
+
+  @include above(lg) {
+    // Font family
+    --ff-preset-6: var(--ff-accent);
+
+    // Font size
+    --fs-preset-1: 144px;
+    --fs-preset-2: 96px;
+    --fs-preset-3: 56px;
+    --fs-preset-4: 32px;
+    --fs-preset-5: 28px;
+    --fs-preset-6: 28px;
+    --fs-preset-8: 16px;
+    --fs-preset-9: 18px;
+
+    // Letter spacing
+    --ls-preset-5: 4px;
+    --ls-preset-8: 2px;
+  }
+}
