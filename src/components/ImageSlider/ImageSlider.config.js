@@ -5,6 +5,7 @@ const config = {
     direction: {
       horizontal: s.imageSlider__horizontal,
       vertical: s.imageSlider__vertical,
+      "vertical-reverse": s.imageSlider__verticalReverse,
     },
     transition: {
       none: s.imageSlider__transitionNone,

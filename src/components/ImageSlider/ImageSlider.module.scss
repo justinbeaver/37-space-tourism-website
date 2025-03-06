@@ -21,6 +21,12 @@
     flex-direction: column;
   }
 
+  &__verticalReverse {
+    --_picture-transform: translateY(calc(100% * var(--_currentImageIndex)));
+
+    flex-direction: column-reverse;
+  }
+
   &__transitionNone {
     --_transition-speed: 0s;
   }
