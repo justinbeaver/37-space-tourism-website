@@ -36,16 +36,13 @@ const Technology = () => {
   );
 
   if (currentTechnologyIndex === -1) {
-    throw new Error("Technology now found");
+    throw new Error("Technology not found");
   }
 
   return (
     <PageBackground variant="technology">
       <div className="wrapper">
-        <section
-          className={s.section}
-          // style={{ "--_page-current-padding": `${pageCurrentPadding}px` }}
-        >
+        <section className={s.section}>
           <h1 className={s.title}>
             <span className={s.num}>03</span>space launch 101
           </h1>
