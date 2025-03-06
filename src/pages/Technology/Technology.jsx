@@ -42,7 +42,7 @@ const Technology = () => {
   return (
     <PageBackground variant="technology">
       <div className="wrapper">
-        <section className={s.section}>
+        <section>
           <h1 className={s.title}>
             <span className={s.num}>03</span>space launch 101
           </h1>
