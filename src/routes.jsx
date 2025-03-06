@@ -6,6 +6,14 @@ import Destination, {
   Content as DestinationContent,
   loader as destinationLoader,
 } from "@/pages/Destination/Destination";
+import Crew, {
+  Content as CrewContent,
+  loader as crewLoader,
+} from "@/pages/Crew/Crew";
+import Technology, {
+  Content as TechnologyContent,
+  loader as technologyLoader,
+} from "@/pages/Technology/Technology";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +33,18 @@ const router = createBrowserRouter([
             element: <DestinationContent />,
           },
         ],
+      },
+      {
+        path: "crew",
+        element: <Crew />,
+        loader: crewLoader,
+        children: [{ path: ":memberName", element: <CrewContent /> }],
+      },
+      {
+        path: "technology",
+        element: <Technology />,
+        loader: technologyLoader,
+        children: [{ path: ":technologyType", element: <TechnologyContent /> }],
       },
     ],
   },
