@@ -129,8 +129,8 @@ const Picture = () => {
 
   return (
     <ImageSlider
-      direction={isLg ? "vertical" : "horizontal"}
-      // direction="vertical"
+      // direction={isLg ? "vertical" : "horizontal"}
+      direction="vertical-reverse"
       imageFit="cover"
       // imageFit="contain"
       images={images}
