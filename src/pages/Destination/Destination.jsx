@@ -6,8 +6,9 @@ import {
   useOutletContext,
 } from "react-router-dom";
 
-import NavItem from "@/components/NavItem/NavItem";
 import PageBackground from "@/components/PageBackground/PageBackground";
+import PagePadding from "@/components/PagePadding/PagePadding";
+import NavItem from "@/components/NavItem/NavItem";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import fetchData from "@/utils/fetchData";
 
@@ -40,14 +41,12 @@ const Destination = () => {
 
   return (
     <PageBackground variant="destination">
-      <div className="wrapper">
-        <section>
-          <h1 className={s.title}>
-            <span className={s.num}>01</span>pick your destination
-          </h1>
-          <Outlet context={{ destinations, currentPlanetIndex }} />
-        </section>
-      </div>
+      <PagePadding>
+        <h1 className={s.title}>
+          <span className={s.num}>01</span>pick your destination
+        </h1>
+        <Outlet context={{ destinations, currentPlanetIndex }} />
+      </PagePadding>
     </PageBackground>
   );
 };
@@ -56,7 +55,7 @@ export default Destination;
 export const Content = () => {
   return (
     <div className={s.content}>
-      <div>
+      <div className={s.imageSliderWrapper}>
         <Picture />
       </div>
       <div className={s.overviewWrapper}>
@@ -80,7 +79,7 @@ const Picture = () => {
 
   return (
     <ImageSlider
-      className={s.imageSlider}
+      transition="none"
       images={images}
       selectedImageIndex={currentPlanetIndex}
     />
@@ -91,7 +90,7 @@ const Nav = () => {
   const { destinations } = useOutletContext();
 
   return (
-    <nav className={s.nav}>
+    <nav>
       <ul className={s.navList}>
         {destinations.map(({ name }) => (
           <li key={name}>
@@ -116,19 +115,19 @@ const Overview = () => {
 
   return (
     <div className={s.overview}>
-      <div>
+      <div className={s.overviewBody}>
         <h2 className={s.planetTitle}>{name}</h2>
         <p className={s.planetDescription}>{description}</p>
       </div>
-      <div className={`decoration-line ${s.decorationLine}`} />
-      <div className={s.meta}>
+      <div className={"decoration-line"} />
+      <section className={s.meta}>
         {meta.map(({ title, description }) => (
-          <div key={title}>
+          <div key={title} className={s.metaItem}>
             <h3 className={s.metaTitle}>{title}</h3>
             <p className={s.metaDescription}>{description}</p>
           </div>
         ))}
-      </div>
+      </section>
     </div>
   );
 };
