@@ -1,0 +1,19 @@
+@use "@/styles/1-tools/media-queries" as *;
+
+.section {
+  --_padding-block-start: var(--sp-500);
+  --_padding-block-end: var(--sp-800);
+
+  padding-block-start: calc(var(--_padding-block-start) + var(--navbar-height));
+  padding-block-end: var(--_padding-block-end);
+
+  @include above(sm) {
+    --_padding-block-start: var(--sp-700);
+    --_padding-block-end: var(--sp-800);
+  }
+
+  @include above(lg) {
+    --_padding-block-start: var(--sp-800);
+    --_padding-block-end: 7rem;
+  }
+}
