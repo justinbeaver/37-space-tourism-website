@@ -2,11 +2,14 @@
 
 .paginationDot {
   --_dot-color: var(--clr-neutral-100);
-  --_size: 45px;
+  --_dot-size: 45px;
   --_background-color: hsl(from var(--_dot-color) h s l / 20%);
 
-  display: inline-block;
-  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: var(--min-tap-target-size);
+  min-height: var(--min-tap-target-size);
   border-radius: var(--br-circle);
 
   &__active {
@@ -25,18 +28,18 @@
   }
 
   &__sm {
-    --_size: 10px;
+    --_dot-size: 10px;
   }
 
   &__md {
-    --_size: 15px;
+    --_dot-size: 15px;
   }
 }
 
 .dot {
   // display: inline-block;
-  width: var(--_size);
-  height: var(--_size);
+  width: var(--_dot-size);
+  height: var(--_dot-size);
   border-radius: var(--br-circle);
   background-color: var(--_background-color);
 }

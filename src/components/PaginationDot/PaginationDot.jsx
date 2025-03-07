@@ -8,7 +8,7 @@ import s from "./PaginationDot.module.scss";
 
 const paginationDotClass = cva(s.paginationDot, config);
 
-const PaginationDot = ({ label, to, size = "sm", className = "", ...rest }) => {
+const PaginationDot = ({ to, size = "sm", className = "", ...rest }) => {
   return (
     <NavLink
       to={to}
@@ -22,7 +22,6 @@ const PaginationDot = ({ label, to, size = "sm", className = "", ...rest }) => {
       {...rest}
     >
       <div className={s.dot} />
-      <span className="visually-hidden">{label}</span>
     </NavLink>
   );
 };
