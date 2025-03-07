@@ -11,6 +11,7 @@ const ImageSlider = ({
   direction = "horizontal",
   transition = "slow",
   imageFit = "contain",
+  imagePosition,
   images = [],
   selectedImageIndex = 0,
   className = "",
@@ -26,6 +27,7 @@ const ImageSlider = ({
         direction,
         transition,
         imageFit,
+        imagePosition,
       })} ${className}`}
       style={{ "--_currentImageIndex": currentImageIndex }}
     >
@@ -49,6 +51,8 @@ export default ImageSlider;
 ImageSlider.propTypes = {
   direction: PropTypes.oneOf(Object.keys(config.variants.direction)),
   transition: PropTypes.oneOf(Object.keys(config.variants.transition)),
+  imageFit: PropTypes.oneOf(Object.keys(config.variants.imageFit)),
+  imagePosition: PropTypes.oneOf(Object.keys(config.variants.imagePosition)),
   images: PropTypes.arrayOf(
     PropTypes.shape({
       alt: PropTypes.string.isRequired,

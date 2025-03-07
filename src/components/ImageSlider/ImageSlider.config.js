@@ -16,6 +16,10 @@ const config = {
       contain: s.imageSlider__contain,
       cover: s.imageSlider__cover,
     },
+    imagePosition: {
+      center: s.imageSlider__positionCenter,
+      bottom: s.imageSlider__positionBottom,
+    },
   },
 };
 export default config;
