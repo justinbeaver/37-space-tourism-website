@@ -1,21 +1,6 @@
 @use "@/styles/1-tools/media-queries" as *;
 @use "@/styles/1-tools/text-preset" as *;
 
-.section {
-  padding-block-start: var(--sp-500);
-  padding-block-end: var(--sp-800);
-
-  @include above(sm) {
-    padding-block-start: var(--sp-700);
-    padding-block-end: var(--sp-700);
-  }
-
-  @include above(lg) {
-    padding-block-start: var(--sp-800);
-    padding-block-end: 7rem;
-  }
-}
-
 .title {
   --_title-color: var(--clr-neutral-100);
 

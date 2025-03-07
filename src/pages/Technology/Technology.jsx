@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import PageBackground from "@/components/PageBackground/PageBackground";
+import PagePadding from "@/components/PagePadding/PagePadding";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import PaginationCircle from "@/components/PaginationCircle/PaginationCircle";
 import useMediaQueries from "@/hooks/useMediaQueries";
@@ -41,14 +42,12 @@ const Technology = () => {
 
   return (
     <PageBackground variant="technology">
-      <div className="wrapper">
-        <section className={s.section}>
-          <h1 className={s.title}>
-            <span className={s.num}>03</span>space launch 101
-          </h1>
-          <Outlet context={{ technologies, currentTechnologyIndex }} />
-        </section>
-      </div>
+      <PagePadding>
+        <h1 className={s.title}>
+          <span className={s.num}>03</span>space launch 101
+        </h1>
+        <Outlet context={{ technologies, currentTechnologyIndex }} />
+      </PagePadding>
     </PageBackground>
   );
 };
@@ -70,7 +69,6 @@ export const Content = () => {
 
 const Overview = () => {
   const { technologies, currentTechnologyIndex } = useOutletContext();
-
   const { name, description } = technologies[currentTechnologyIndex];
 
   return (
@@ -113,12 +111,6 @@ const Picture = () => {
   const images = technologies.map(({ name, images }) => ({
     alt: `picture of the ${name}`,
     urls: {
-      // default: isSm
-      //   ? images.landscape
-      //   : isLg
-      //   ? images.portrait
-      //   : images.portrait,
-      // default: images.portrait,
       default: isLg
         ? images.portrait
         : isSm
@@ -131,7 +123,6 @@ const Picture = () => {
     <ImageSlider
       direction={isLg ? "vertical-reverse" : "horizontal-reverse"}
       imageFit="cover"
-      // imageFit="contain"
       images={images}
       selectedImageIndex={currentTechnologyIndex}
     />
