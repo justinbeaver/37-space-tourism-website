@@ -42,7 +42,7 @@ const Technology = () => {
   return (
     <PageBackground variant="technology">
       <div className="wrapper">
-        <section>
+        <section className={s.section}>
           <h1 className={s.title}>
             <span className={s.num}>03</span>space launch 101
           </h1>
@@ -86,7 +86,7 @@ const Overview = () => {
 
 const Nav = () => {
   const { technologies } = useOutletContext();
-  const { isSm } = useMediaQueries();
+  const { isLg } = useMediaQueries();
 
   return (
     <nav>
@@ -97,7 +97,7 @@ const Nav = () => {
               label={index + 1}
               aria-label={name}
               to={`/technology/${name}`}
-              size={isSm ? "md" : "sm"}
+              size={isLg ? "md" : "sm"}
             />
           </li>
         ))}
@@ -129,8 +129,7 @@ const Picture = () => {
 
   return (
     <ImageSlider
-      // direction={isLg ? "vertical" : "horizontal"}
-      direction="vertical-reverse"
+      direction={isLg ? "vertical-reverse" : "horizontal-reverse"}
       imageFit="cover"
       // imageFit="contain"
       images={images}
