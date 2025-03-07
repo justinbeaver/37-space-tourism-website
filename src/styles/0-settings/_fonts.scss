@@ -71,7 +71,7 @@
   --ff-preset-3: var(--ff-accent);
   --ff-preset-4: var(--ff-accent);
   --ff-preset-5: var(--ff-secondary);
-  --ff-preset-6: var(--ff-secondary);
+  --ff-preset-6: var(--ff-accent);
   --ff-preset-7: var(--ff-secondary);
   --ff-preset-8: var(--ff-secondary);
   --ff-preset-9: var(--ff-primary);
@@ -82,7 +82,7 @@
   --fs-preset-3: 24px;
   --fs-preset-4: 18px;
   --fs-preset-5: 20px;
-  --fs-preset-6: 16px;
+  --fs-preset-6: 28px;
   --fs-preset-7: 14px;
   --fs-preset-8: 14px;
   --fs-preset-9: 15px;
@@ -115,7 +115,7 @@
   --ls-preset-3: var(--ls-default);
   --ls-preset-4: var(--ls-default);
   --ls-preset-5: 15%;
-  --ls-preset-6: 15%;
+  --ls-preset-6: var(--ls-default);
   --ls-preset-7: 2px;
   --ls-preset-8: 15%;
   --ls-preset-9: var(--ls-default);
@@ -129,16 +129,12 @@
   }
 
   @include above(lg) {
-    // Font family
-    --ff-preset-6: var(--ff-accent);
-
     // Font size
     --fs-preset-1: 144px;
     --fs-preset-2: 96px;
     --fs-preset-3: 56px;
     --fs-preset-4: 32px;
     --fs-preset-5: 28px;
-    --fs-preset-6: 28px;
     --fs-preset-8: 16px;
     --fs-preset-9: 18px;
 
