@@ -15,6 +15,12 @@
     flex-direction: row;
   }
 
+  &__horizontalReverse {
+    --_picture-transform: translateX(calc(100% * var(--_currentImageIndex)));
+
+    flex-direction: row-reverse;
+  }
+
   &__vertical {
     --_picture-transform: translateY(calc(-100% * var(--_currentImageIndex)));
 
