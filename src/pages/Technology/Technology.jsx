@@ -10,7 +10,7 @@ import PageBackground from "@/components/PageBackground/PageBackground";
 import PagePadding from "@/components/PagePadding/PagePadding";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import PaginationCircle from "@/components/PaginationCircle/PaginationCircle";
-import useMediaQueries from "@/hooks/useMediaQueries";
+import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 import fetchData from "@/utils/fetchData";
 
 import s from "./Technology.module.scss";
@@ -84,7 +84,7 @@ const Overview = () => {
 
 const Nav = () => {
   const { technologies } = useOutletContext();
-  const { isLg } = useMediaQueries();
+  const { isLg } = useMediaQueriesContext();
 
   return (
     <nav>
@@ -106,7 +106,7 @@ const Nav = () => {
 
 const Picture = () => {
   const { technologies, currentTechnologyIndex } = useOutletContext();
-  const { isSm, isLg } = useMediaQueries();
+  const { isSm, isLg } = useMediaQueriesContext();
 
   const images = technologies.map(({ name, images }) => ({
     alt: `picture of the ${name}`,
