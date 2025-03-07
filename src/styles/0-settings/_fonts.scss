@@ -120,7 +120,7 @@
   --ls-preset-8: 15%;
   --ls-preset-9: var(--ls-default);
 
-  @include above(md) {
+  @include above(sm) {
     // Font size
     --fs-preset-2: 80px;
     --fs-preset-3: 40px;
