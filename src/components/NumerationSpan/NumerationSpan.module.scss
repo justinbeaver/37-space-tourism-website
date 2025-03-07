@@ -1,0 +1,24 @@
+.numerationSpan {
+  --_margin: 0px;
+  --_tone-opacity: 100%;
+
+  margin-inline-end: var(--_margin);
+  color: hsl(from currentColor h s l / var(--_tone-opacity));
+  font-weight: var(--fw-bold);
+
+  &__margin--none {
+    --_margin: 0px;
+  }
+
+  &__margin--right {
+    --_margin: 1em;
+  }
+
+  &__tone--normal {
+    --_tone-opacity: 100%;
+  }
+
+  &__tone--muted {
+    --_tone-opacity: 25%;
+  }
+}
