@@ -7,8 +7,10 @@ import {
 } from "react-router-dom";
 
 import PageBackground from "@/components/PageBackground/PageBackground";
+import PagePadding from "@/components/PagePadding/PagePadding";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import PaginationDot from "@/components/PaginationDot/PaginationDot";
+import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 import fetchData from "@/utils/fetchData";
 
 import s from "./Crew.module.scss";
@@ -40,14 +42,12 @@ const Crew = () => {
 
   return (
     <PageBackground variant="crew">
-      <div className="wrapper">
-        <section>
-          <h1 className={s.title}>
-            <span className={s.num}>02</span>meet your crew
-          </h1>
-          <Outlet context={{ members, currentMemberIndex }} />
-        </section>
-      </div>
+      <PagePadding>
+        <h1 className={s.title}>
+          <span className={s.num}>02</span>meet your crew
+        </h1>
+        <Outlet context={{ members, currentMemberIndex }} />
+      </PagePadding>
     </PageBackground>
   );
 };
@@ -56,11 +56,11 @@ export default Crew;
 export const Content = () => {
   return (
     <div className={s.content}>
-      <div>
+      <div className={s.overviewWrapper}>
         <Overview />
         <Nav />
       </div>
-      <div>
+      <div className={s.imageSliderWrapper}>
         <Picture />
       </div>
     </div>
@@ -85,13 +85,18 @@ const Overview = () => {
 
 const Nav = () => {
   const { members } = useOutletContext();
+  const { isLg } = useMediaQueriesContext();
 
   return (
-    <nav>
+    <nav className={s.nav}>
       <ul className={s.navList}>
         {members.map(({ name }) => (
           <li key={name}>
-            <PaginationDot label={name} to={`/crew/${name}`} size="sm" />
+            <PaginationDot
+              aria-label={name}
+              to={`/crew/${name}`}
+              size={isLg ? "md" : "sm"}
+            />
           </li>
         ))}
       </ul>
@@ -101,6 +106,7 @@ const Nav = () => {
 
 const Picture = () => {
   const { members, currentMemberIndex } = useOutletContext();
+  const { isLg } = useMediaQueriesContext();
 
   const images = members.map(({ name, images }) => ({
     alt: `picture of the ${name}`,
@@ -112,7 +118,9 @@ const Picture = () => {
 
   return (
     <ImageSlider
-      className={s.imageSlider}
+      imageFit="contain"
+      imagePosition="bottom"
+      transition={isLg ? "none" : "slow"}
       images={images}
       selectedImageIndex={currentMemberIndex}
     />

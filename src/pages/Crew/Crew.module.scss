@@ -1,22 +1,18 @@
 @use "@/styles/1-tools/media-queries" as *;
+@use "@/styles/1-tools/text-preset" as *;
 
 .title {
-  --_margin-block-end: var(--sp-800);
+  --_margin-block-end: var(--sp-900);
   --_title-color: var(--clr-neutral-100);
-  --_font-size: var(--fs-300);
 
   margin-block-end: var(--_margin-block-end);
   color: var(--_title-color);
-  font-family: var(--ff-secondary);
-  font-size: var(--_font-size);
-  font-weight: var(--fw-regular);
-  letter-spacing: var(--ls-md);
+  @include text-preset-5;
   text-align: center;
   text-transform: uppercase;
 
   @include above(sm) {
     --_margin-block-end: 4rem;
-    --_font-size: var(--fs-400);
 
     text-align: start;
   }
@@ -25,23 +21,47 @@
 .num {
   margin-inline-end: 1em;
   color: hsl(from var(--_title-color) h s l / 25%);
-  // font-weight: var(--fw-semi-bold);
-  font-weight: var(--fw-bold);
 }
 
 .content {
   display: grid;
   justify-items: center;
   row-gap: var(--sp-500);
+
+  @include above(sm) {
+    row-gap: var(--sp-600);
+  }
+
+  @include above(lg) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--sp-600);
+    margin-block-end: calc(var(--sp-900) * -1);
+  }
+}
+
+.overviewWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-600);
+
+  @include above(lg) {
+    row-gap: normal;
+  }
 }
 
 .overview {
-  max-width: 45ch;
-  margin-block-end: 4rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-500);
+  max-width: 56ch;
   color: var(--clr-primary-300);
-  font-size: var(--fs-300);
-  line-height: var(--lh-md);
+  @include text-preset-9;
   text-align: center;
+
+  @include above(lg) {
+    margin-block: auto;
+    text-align: start;
+  }
 }
 
 .memberHeader {
@@ -49,18 +69,26 @@
 
   display: flex;
   flex-direction: column-reverse;
-  margin-block-end: var(--sp-300);
+  row-gap: var(--sp-300);
   color: hsl(from var(--_title-color) h s l / 50%);
-  font-family: var(--ff-accent);
-  font-size: var(--fs-400);
+  @include text-preset-4;
   text-transform: uppercase;
+
+  @include above(sm) {
+    row-gap: var(--sp-400);
+  }
 }
 
 .memberTitle {
-  --_font-size: var(--sp-500);
-
   color: var(--_title-color);
-  font-size: var(--_font-size);
+  @include text-preset-3;
+}
+
+.nav {
+  @include above(lg) {
+    margin-inline-end: auto;
+    transform: translateY(-100%);
+  }
 }
 
 .navList {
@@ -69,6 +97,18 @@
   gap: var(--sp-400);
 }
 
-.imageSlider {
-  max-width: 240px;
+.imageSliderWrapper {
+  height: 355px;
+  margin-inline: calc(
+    (var(--wrapper-padding-inline) + var(--wrapper-current-padding)) * -1
+  );
+
+  @include above(sm) {
+    height: 530px;
+  }
+
+  @include above(lg) {
+    height: 660px;
+    margin-inline: 0px;
+  }
 }
