@@ -8,6 +8,7 @@ import {
 
 import PageBackground from "@/components/PageBackground/PageBackground";
 import PagePadding from "@/components/PagePadding/PagePadding";
+import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
 import NavItem from "@/components/NavItem/NavItem";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import fetchData from "@/utils/fetchData";
@@ -43,7 +44,8 @@ const Destination = () => {
     <PageBackground variant="destination">
       <PagePadding>
         <h1 className={s.title}>
-          <span className={s.num}>01</span>pick your destination
+          <NumerationSpan tone="muted">01</NumerationSpan>
+          pick your destination
         </h1>
         <Outlet context={{ destinations, currentPlanetIndex }} />
       </PagePadding>
