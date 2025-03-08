@@ -26,8 +26,8 @@ const NumerationSpan = ({
 export default NumerationSpan;
 
 NumerationSpan.propTypes = {
-  margin: PropTypes.oneOf(config.variants.margin),
-  tone: PropTypes.oneOf(config.variants.tone),
+  margin: PropTypes.oneOf(Object.keys(config.variants.margin)),
+  tone: PropTypes.oneOf(Object.keys(config.variants.tone)),
   className: PropTypes.string,
   children: PropTypes.node,
 };
