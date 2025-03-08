@@ -122,6 +122,7 @@
 
   @include above(sm) {
     // Font size
+    --fs-preset-1: 144px;
     --fs-preset-2: 80px;
     --fs-preset-3: 40px;
     --fs-preset-4: 24px;
@@ -130,7 +131,7 @@
 
   @include above(lg) {
     // Font size
-    --fs-preset-1: 144px;
+    // --fs-preset-1: 144px;
     --fs-preset-2: 96px;
     --fs-preset-3: 56px;
     --fs-preset-4: 32px;
