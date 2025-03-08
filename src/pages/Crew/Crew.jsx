@@ -8,6 +8,7 @@ import {
 
 import PageBackground from "@/components/PageBackground/PageBackground";
 import PagePadding from "@/components/PagePadding/PagePadding";
+import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import PaginationDot from "@/components/PaginationDot/PaginationDot";
 import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
@@ -44,7 +45,8 @@ const Crew = () => {
     <PageBackground variant="crew">
       <PagePadding>
         <h1 className={s.title}>
-          <span className={s.num}>02</span>meet your crew
+          <NumerationSpan tone="muted">02</NumerationSpan>
+          meet your crew
         </h1>
         <Outlet context={{ members, currentMemberIndex }} />
       </PagePadding>
