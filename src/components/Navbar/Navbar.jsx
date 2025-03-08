@@ -1,4 +1,5 @@
 import NavItem from "@/components/NavItem/NavItem";
+import NumerationSpan from "../NumerationSpan/NumerationSpan";
 import { useNavbarHeight } from "./Navbar.hooks";
 import Logo from "@/assets/shared/logo.svg?react";
 import content from "./Navbar.content.json";
@@ -17,7 +18,9 @@ const Navbar = () => {
           {content.nav.map(({ label, href }, index) => (
             <li key={index} className={s.listItem}>
               <NavItem to={href}>
-                <span>{String(index).padStart(2, "0")}</span>
+                <NumerationSpan margin="none">
+                  {String(index).padStart(2, "0")}
+                </NumerationSpan>
                 {label}
               </NavItem>
             </li>
