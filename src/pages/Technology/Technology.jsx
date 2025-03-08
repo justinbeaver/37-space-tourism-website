@@ -8,6 +8,7 @@ import {
 
 import PageBackground from "@/components/PageBackground/PageBackground";
 import PagePadding from "@/components/PagePadding/PagePadding";
+import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import PaginationCircle from "@/components/PaginationCircle/PaginationCircle";
 import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
@@ -44,7 +45,7 @@ const Technology = () => {
     <PageBackground variant="technology">
       <PagePadding>
         <h1 className={s.title}>
-          <span className={s.num}>03</span>space launch 101
+          <NumerationSpan tone="muted">03</NumerationSpan>space launch 101
         </h1>
         <Outlet context={{ technologies, currentTechnologyIndex }} />
       </PagePadding>
