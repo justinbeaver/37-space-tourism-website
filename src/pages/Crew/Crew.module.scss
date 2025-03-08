@@ -28,7 +28,7 @@
   }
 
   @include above(lg) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.8fr;
     column-gap: var(--sp-600);
     margin-block-end: calc(var(--sp-900) * -1);
   }
