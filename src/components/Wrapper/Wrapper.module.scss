@@ -1,0 +1,16 @@
+.wrapper {
+  // width: 100%;
+  margin-inline: auto;
+
+  &__md {
+    max-width: var(--wrapper-max-width);
+  }
+
+  &__lg {
+    max-width: var(--wrapper-max-width-lg);
+  }
+
+  &__padding--md {
+    padding-inline: var(--wrapper-padding-inline);
+  }
+}
