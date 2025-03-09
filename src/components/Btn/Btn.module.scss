@@ -21,13 +21,18 @@
   line-height: 1.1;
   text-align: center;
   text-decoration: none;
-  transition: box-shadow var(--ts-slow), color var(--ts-fast);
+  transition: box-shadow var(--ts-slow), color var(--ts-fast),
+    transform var(--ts-fast);
   cursor: pointer;
 
   &:hover,
   &:focus-visible {
     box-shadow: 0px 0px 0px 90px hsl(from var(--_background-color) h s l / 10%);
     color: hsl(from var(--_color) h s l / 50%);
+  }
+
+  &:active {
+    transform: scale(var(--active-scale-factor));
   }
 
   &__primary {
@@ -46,7 +51,7 @@
   }
 
   &__pending {
-    animation: blinker 1s linear infinite;
+    animation: blinker 2.5s linear infinite;
   }
 
   // &[disabled] {
