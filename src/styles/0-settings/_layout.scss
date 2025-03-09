@@ -2,9 +2,11 @@
 
 :root {
   --app-min-width: 320px;
-  --app-max-width: 1440px;
+  --app-max-width: 2400px;
+  // --app-max-width: 1440px;
 
   --wrapper-max-width: 1120px;
+  --wrapper-max-width-lg: 1440px;
   // --wrapper-max-width: 80rem;
   --wrapper-padding-inline: var(--sp-500);
   --wrapper-current-padding: var(--wrapper-padding-inline);
