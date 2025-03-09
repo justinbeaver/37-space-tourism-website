@@ -1,16 +1,12 @@
 @use "@/styles/1-tools/media-queries" as *;
+@use "@/styles/1-tools/text-preset" as *;
 
 .header {
-  position: fixed;
+  // position: fixed;
   position: absolute;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  // width: 100%;
-  font-family: var(--ff-secondary);
-  font-size: var(--fs-300);
+  @include text-preset-8;
 
   @include above(md) {
     // margin-block-start: var(--sp-700);
@@ -18,9 +14,27 @@
   }
 }
 
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // width: 100%;
+}
+
 .logo {
   flex-shrink: 0;
+  display: flex;
   margin-inline: var(--sp-700);
+  transition: transform var(--ts-fast);
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(var(--hover-scale-factor));
+  }
+
+  &:active {
+    transform: scale(var(--active-scale-factor));
+  }
 }
 
 .decorationLine {
