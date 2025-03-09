@@ -34,6 +34,13 @@
     }
   }
 
+  &:active {
+    > * {
+      transform: scale(var(--active-scale-factor));
+      transform-origin: bottom;
+    }
+  }
+
   &__pending {
     animation: blinker 1s linear infinite;
   }
