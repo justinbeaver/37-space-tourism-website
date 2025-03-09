@@ -11,6 +11,7 @@ import PagePadding from "@/components/PagePadding/PagePadding";
 import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
 import NavItem from "@/components/NavItem/NavItem";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
+import DecorationLine from "@/components/DecorationLine/DecorationLine";
 import fetchData from "@/utils/fetchData";
 
 import s from "./Destination.module.scss";
@@ -121,7 +122,7 @@ const Overview = () => {
         <h2 className={s.planetTitle}>{name}</h2>
         <p className={s.planetDescription}>{description}</p>
       </div>
-      <div className={"decoration-line"} />
+      <DecorationLine />
       <section className={s.meta}>
         {meta.map(({ title, description }) => (
           <div key={title} className={s.metaItem}>
