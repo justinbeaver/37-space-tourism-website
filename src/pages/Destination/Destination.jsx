@@ -97,7 +97,9 @@ const Nav = () => {
       <ul className={s.navList}>
         {destinations.map(({ name }) => (
           <li key={name}>
-            <NavItem to={`/destination/${name}`}>{name}</NavItem>
+            <NavItem to={`/destination/${name}`}>
+              <span>{name}</span>
+            </NavItem>
           </li>
         ))}
       </ul>
