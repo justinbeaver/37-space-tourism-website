@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 
 import s from "./DecorationLine.module.scss";
 
-const DecorationLine = ({ className = "" }) => {
-  return <div className={`${s.decorationLine} ${className}`} />;
+const DecorationLine = ({ className = "", ...rest }) => {
+  return <div className={`${s.decorationLine} ${className}`} {...rest} />;
 };
 export default DecorationLine;
 
