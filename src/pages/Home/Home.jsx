@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useNavigation } from "react-router-dom";
+
 import Btn from "@/components/Btn/Btn";
 import PageBackground from "@/components/PageBackground/PageBackground";
 import PagePadding from "@/components/PagePadding/PagePadding";
@@ -37,11 +40,23 @@ const Header = () => {
 };
 
 const ExploreButton = () => {
+  const [isClicked, setIsClicked] = useState(false);
+  const { state, location } = useNavigation();
   const { isSm } = useMediaQueriesContext();
 
   return (
     <div className={s.btnWrapper}>
-      <Btn variant="primary" size={isSm ? "lg" : "md"}>
+      <Btn
+        to="destination"
+        variant="primary"
+        size={isSm ? "lg" : "md"}
+        isPending={
+          isClicked &&
+          state === "loading" &&
+          location?.pathname === "/destination"
+        }
+        onClick={() => setIsClicked(true)}
+      >
         EXPLORE
       </Btn>
     </div>
