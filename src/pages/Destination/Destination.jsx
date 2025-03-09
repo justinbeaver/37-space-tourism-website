@@ -122,7 +122,7 @@ const Overview = () => {
         <h2 className={s.planetTitle}>{name}</h2>
         <p className={s.planetDescription}>{description}</p>
       </div>
-      <DecorationLine />
+      <DecorationLine aria-hidden={true} />
       <section className={s.meta}>
         {meta.map(({ title, description }) => (
           <div key={title} className={s.metaItem}>
