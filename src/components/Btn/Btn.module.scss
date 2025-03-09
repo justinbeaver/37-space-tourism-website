@@ -1,3 +1,5 @@
+@use "@/styles/2-generic/animations";
+
 .btn {
   --_padding: 0em;
   --_background-color: transparent;
@@ -41,6 +43,10 @@
   &__lg {
     --_padding: 1.6em;
     --_font-size: var(--fs-600);
+  }
+
+  &__pending {
+    animation: blinker 1s linear infinite;
   }
 
   // &[disabled] {

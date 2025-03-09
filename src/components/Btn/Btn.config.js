@@ -9,6 +9,9 @@ const config = {
       md: s.btn__md,
       lg: s.btn__lg,
     },
+    pending: {
+      true: s.btn__pending,
+    },
   },
 };
 export default config;

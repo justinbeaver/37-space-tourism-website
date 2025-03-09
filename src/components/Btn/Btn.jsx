@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { cva } from "class-variance-authority";
 
@@ -8,21 +9,24 @@ import s from "./Btn.module.scss";
 const btnClass = cva(s.btn, config);
 
 const Btn = ({
+  to,
   variant,
   size,
-  href,
-  // className,
+  isPending = false,
+  className = "",
   children,
-  // onClick,
   ...rest
 }) => {
-  const ElementType = href ? "a" : "button";
+  const ElementType = to ? Link : "button";
 
   return (
     <ElementType
-      className={btnClass({ variant, size })}
-      href={href}
-      // onClick={onClick}
+      to={to}
+      className={`${btnClass({
+        variant,
+        size,
+        pending: isPending,
+      })} ${className}`}
       {...rest}
     >
       {children}
@@ -32,10 +36,10 @@ const Btn = ({
 export default Btn;
 
 Btn.propTypes = {
+  to: PropTypes.string,
   variant: PropTypes.oneOf(Object.keys(config.variants.variant)),
   size: PropTypes.oneOf(Object.keys(config.variants.size)),
-  href: PropTypes.string,
-  // className: PropTypes.string,
+  isPending: PropTypes.bool,
+  className: PropTypes.string,
   children: PropTypes.node,
-  // onClick: PropTypes.func,
 };
