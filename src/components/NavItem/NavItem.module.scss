@@ -13,6 +13,7 @@
   display: inline-flex;
   align-items: center; // Aligns text vertically
   gap: 0.5em;
+  min-height: var(--min-tap-target-size);
   color: var(--clr-neutral-100);
   font-weight: var(--fw-regular);
   letter-spacing: var(--ls-md);
