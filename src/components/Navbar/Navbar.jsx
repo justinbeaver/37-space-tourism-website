@@ -1,18 +1,21 @@
+import DecorationLine from "../DecorationLine/DecorationLine";
 import NavItem from "@/components/NavItem/NavItem";
 import NumerationSpan from "../NumerationSpan/NumerationSpan";
 import { useNavbarHeight } from "./Navbar.hooks";
+import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 import Logo from "@/assets/shared/logo.svg?react";
 import content from "./Navbar.content.json";
 
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
+  const { isMd } = useMediaQueriesContext();
   const { navbarRef } = useNavbarHeight();
 
   return (
     <header ref={navbarRef} className={s.header}>
       <Logo className={s.logo} />
-      <div className={s.decorationLine}></div>
+      {isMd && <DecorationLine className={s.decorationLine} />}
       <nav className={s.nav}>
         <ul className={s.list}>
           {content.nav.map(({ label, href }, index) => (

@@ -25,18 +25,7 @@
 
 .decorationLine {
   z-index: 1;
-  // flex-shrink: 1;
-  display: none;
-  width: 100%;
-  // max-width: 560px;
-  height: 2px;
-  // background-color: red;
-  background-color: hsl(from var(--clr-neutral-100) h s l / 25%);
   transform: translateX(var(--sp-600));
-
-  @include above(md) {
-    display: block;
-  }
 }
 
 .nav {
