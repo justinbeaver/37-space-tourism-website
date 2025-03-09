@@ -18,7 +18,7 @@ const Navbar = () => {
     <header ref={navbarRef} className={s.header}>
       <Wrapper size="lg" padding="none">
         <div className={s.headerInner}>
-          <Logo />
+          <HomeLink />
           <Decoration />
           <Nav />
         </div>
@@ -28,9 +28,9 @@ const Navbar = () => {
 };
 export default Navbar;
 
-const Logo = () => {
+const HomeLink = () => {
   return (
-    <Link className={s.logo} to="/" aria-label="home">
+    <Link className={s.homeLink} to="/" aria-label="home">
       <LogoIcon aria-label="logo icon" />
     </Link>
   );
@@ -51,14 +51,17 @@ const Nav = () => {
     <nav className={s.nav}>
       <ul className={s.list}>
         {nav.map(({ label, href }, index) => (
-          <li key={index} className={s.listItem}>
-            <NavItem to={href}>
-              <NumerationSpan margin="none">
-                {String(index).padStart(2, "0")}
-              </NumerationSpan>
-              <span>{label}</span>
-            </NavItem>
-          </li>
+          <>
+            {index !== 0 && <div className={s.listSpacer} />}
+            <li key={index} className={s.listItem}>
+              <NavItem to={href}>
+                <NumerationSpan margin="none">
+                  {String(index).padStart(2, "0")}
+                </NumerationSpan>
+                <span>{label}</span>
+              </NavItem>
+            </li>
+          </>
         ))}
       </ul>
     </nav>
