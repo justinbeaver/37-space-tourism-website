@@ -11,8 +11,12 @@
   --wrapper-padding-inline: var(--sp-500);
   --wrapper-current-padding: var(--wrapper-padding-inline);
 
-  --navbar-min-height: 96px;
+  --navbar-min-height: 88px;
   --navbar-height: var(--navbar-min-height);
+
+  @include above(sm) {
+    --navbar-min-height: 96px;
+  }
 
   // --section-padding-block: 5rem;
   // --sidebar-width: 300px;
