@@ -1,17 +1,21 @@
+import { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import Wrapper from "@/components/Wrapper/Wrapper";
-import DecorationLine from "../DecorationLine/DecorationLine";
+import Icon from "@/components/Icon/Icon";
+import DecorationLine from "@/components/DecorationLine/DecorationLine";
 import NavItem from "@/components/NavItem/NavItem";
-import NumerationSpan from "../NumerationSpan/NumerationSpan";
-import { useNavbarHeight } from "./Navbar.hooks";
+import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
 import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
+import { useNavbarHeight } from "./Navbar.hooks";
 import LogoIcon from "@/assets/shared/logo.svg?react";
 import content from "./Navbar.content.json";
 
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { navbarRef } = useNavbarHeight();
 
   return (
@@ -19,8 +23,15 @@ const Navbar = () => {
       <Wrapper size="lg" padding="none">
         <div className={s.headerInner}>
           <HomeLink />
+          <ToggleButton
+            isOpen={isMenuOpen}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          />
           <Decoration />
-          <Nav />
+          <Nav
+            isOpen={isMenuOpen}
+            onNavItemClick={() => setIsMenuOpen(false)}
+          />
         </div>
       </Wrapper>
     </header>
@@ -44,17 +55,27 @@ const Decoration = () => {
   ) : null;
 };
 
-const Nav = () => {
+const Nav = ({ isOpen, onNavItemClick }) => {
+  const { isSm } = useMediaQueriesContext();
   const { nav } = content;
 
   return (
-    <nav className={s.nav}>
+    <nav
+      className={`${s.nav} ${isOpen ? s.nav__open : ""}`}
+      aria-hidden={!isOpen}
+    >
       <ul className={s.list}>
         {nav.map(({ label, href }, index) => (
           <>
+            {/* TODO should return a single element */}
             {index !== 0 && <div className={s.listSpacer} />}
             <li key={index} className={s.listItem}>
-              <NavItem to={href}>
+              <NavItem
+                to={href}
+                underline={isSm ? "bottom" : "right"}
+                tabIndex={isOpen ? 0 : -1}
+                onClick={onNavItemClick}
+              >
                 <NumerationSpan margin="none">
                   {String(index).padStart(2, "0")}
                 </NumerationSpan>
@@ -66,4 +87,28 @@ const Nav = () => {
       </ul>
     </nav>
   );
+};
+
+Nav.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onNavItemClick: PropTypes.func,
+};
+
+const ToggleButton = ({ isOpen, onClick }) => {
+  const { isSm } = useMediaQueriesContext();
+
+  return isSm ? null : (
+    <button
+      className={s.menuBtn}
+      aria-label={isOpen ? "close menu" : "open menu"}
+      onClick={onClick}
+    >
+      <Icon name={isOpen ? "close" : "hamburger"} aria-hidden="true" />
+    </button>
+  );
+};
+
+ToggleButton.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };

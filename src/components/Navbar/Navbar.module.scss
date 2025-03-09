@@ -14,7 +14,9 @@
 
 .headerInner {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  min-height: var(--navbar-min-height);
 }
 
 .homeLink {
@@ -53,6 +55,7 @@
 .nav {
   --_padding-inline: var(--sp-700);
 
+  align-self: stretch;
   padding-inline: var(--_padding-inline);
   width: 100%;
   background-color: hsl(0 0% 100% / 5%);
@@ -64,28 +67,86 @@
     width: auto;
     padding-inline-start: calc(var(--_padding-inline) * 2);
   }
+
+  @include below(sm) {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(255px, 100%);
+    padding-inline-end: 0px;
+    padding-block-start: var(--navbar-height);
+    transform: translateX(100%);
+    transition: transform var(--ts-slow);
+  }
+
+  &__open {
+    @include below(sm) {
+      transform: translate(0%);
+    }
+  }
 }
 
 .list {
   display: flex;
-  justify-content: end;
   flex-wrap: wrap;
+  justify-content: end;
+  height: 100%;
   row-gap: var(--sp-400);
+
+  @include below(sm) {
+    flex-direction: column;
+    justify-content: start;
+    row-gap: normal;
+  }
 }
 
 .listItem {
-  display: flex;
-  min-height: var(--navbar-min-height);
+  display: grid;
 }
 
 .listSpacer {
-  --_items-gap: var(--sp-700);
+  --_items-column-gap: var(--sp-700);
+  --_items-row-gap: var(--sp-400);
 
   flex-grow: 1;
   min-width: var(--sp-400);
-  max-width: var(--_items-gap);
+  max-width: var(--_items-column-gap);
 
   @include above(md) {
-    width: var(--_items-gap);
+    width: var(--_items-column-gap);
+  }
+
+  @include below(sm) {
+    flex-grow: 0;
+    height: var(--_items-row-gap);
+  }
+}
+
+.menuBtn {
+  z-index: 2;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: var(--min-tap-target-size);
+  min-height: var(--min-tap-target-size);
+
+  margin-inline: var(--sp-300);
+
+  border: none;
+  border-radius: var(--br-base);
+  background-color: transparent;
+  transition: transform var(--ts-fast);
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    transform: scale(var(--hover-scale-factor));
+  }
+
+  &:active {
+    transform: scale(var(--active-scale-factor));
   }
 }
