@@ -20,8 +20,8 @@ import content from "./Navbar.content.json";
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const [isMenuOpen, { off: closeMenu, toggle: toggleMenu }] =
-    useBoolean(false);
+  const [isMenuOpen, { on: openMenu, off: closeMenu }] = useBoolean(false);
+  const { isSm } = useMediaQueriesContext();
   const { navbarRef } = useNavbarHeight();
 
   return (
@@ -29,7 +29,15 @@ const Navbar = () => {
       <Wrapper size="lg" padding="none">
         <div className={s.headerInner}>
           <HomeLink />
-          <ToggleButton isOpen={isMenuOpen} onClick={toggleMenu} />
+          {isSm ? null : (
+            <button
+              className={s.menuBtn}
+              aria-label={"open menu"}
+              onClick={openMenu}
+            >
+              <Icon name="hamburger" aria-hidden="true" />
+            </button>
+          )}
           <Decoration />
           <Nav isOpen={isMenuOpen} onMenuClose={closeMenu} />
         </div>
@@ -67,6 +75,17 @@ const Nav = ({ isOpen, onMenuClose }) => {
       className={`${s.nav} ${isOpen ? s.nav__open : ""}`}
       aria-hidden={!isOpen}
     >
+      {isSm ? null : (
+        <button
+          className={s.menuBtn}
+          tabIndex={isOpen ? 0 : -1}
+          aria-label="close menu"
+          onClick={onMenuClose}
+        >
+          <Icon name="close" aria-hidden="true" />
+        </button>
+      )}
+
       <ul className={s.list}>
         {nav.map(({ label, href }, index) => (
           <>
@@ -97,21 +116,21 @@ Nav.propTypes = {
   onMenuClose: PropTypes.func.isRequired,
 };
 
-const ToggleButton = ({ isOpen, onClick }) => {
-  const { isSm } = useMediaQueriesContext();
+// const ToggleButton = ({ isOpen, onClick }) => {
+//   const { isSm } = useMediaQueriesContext();
 
-  return isSm ? null : (
-    <button
-      className={s.menuBtn}
-      aria-label={isOpen ? "close menu" : "open menu"}
-      onClick={onClick}
-    >
-      <Icon name={isOpen ? "close" : "hamburger"} aria-hidden="true" />
-    </button>
-  );
-};
+//   return isSm ? null : (
+//     <button
+//       className={s.menuBtn}
+//       aria-label={isOpen ? "close menu" : "open menu"}
+//       onClick={onClick}
+//     >
+//       <Icon name={isOpen ? "close" : "hamburger"} aria-hidden="true" />
+//     </button>
+//   );
+// };
 
-ToggleButton.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
+// ToggleButton.propTypes = {
+//   isOpen: PropTypes.bool.isRequired,
+//   onClick: PropTypes.func.isRequired,
+// };
