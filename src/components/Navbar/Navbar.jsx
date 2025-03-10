@@ -7,8 +7,12 @@ import Icon from "@/components/Icon/Icon";
 import DecorationLine from "@/components/DecorationLine/DecorationLine";
 import NavItem from "@/components/NavItem/NavItem";
 import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
+
 import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
+
+import useClickAway from "@/hooks/useClickAway";
 import { useNavbarHeight } from "./Navbar.hooks";
+
 import LogoIcon from "@/assets/shared/logo.svg?react";
 import content from "./Navbar.content.json";
 
@@ -28,10 +32,7 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen((prev) => !prev)}
           />
           <Decoration />
-          <Nav
-            isOpen={isMenuOpen}
-            onNavItemClick={() => setIsMenuOpen(false)}
-          />
+          <Nav isOpen={isMenuOpen} onMenuClose={() => setIsMenuOpen(false)} />
         </div>
       </Wrapper>
     </header>
@@ -55,12 +56,14 @@ const Decoration = () => {
   ) : null;
 };
 
-const Nav = ({ isOpen, onNavItemClick }) => {
+const Nav = ({ isOpen, onMenuClose }) => {
   const { isSm } = useMediaQueriesContext();
+  const { ref: menuRef } = useClickAway(onMenuClose);
   const { nav } = content;
 
   return (
     <nav
+      ref={menuRef}
       className={`${s.nav} ${isOpen ? s.nav__open : ""}`}
       aria-hidden={!isOpen}
     >
@@ -74,7 +77,7 @@ const Nav = ({ isOpen, onNavItemClick }) => {
                 to={href}
                 underline={isSm ? "bottom" : "right"}
                 tabIndex={isOpen ? 0 : -1}
-                onClick={onNavItemClick}
+                onClick={onMenuClose}
               >
                 <NumerationSpan margin="none">
                   {String(index).padStart(2, "0")}
@@ -91,7 +94,7 @@ const Nav = ({ isOpen, onNavItemClick }) => {
 
 Nav.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onNavItemClick: PropTypes.func,
+  onMenuClose: PropTypes.func.isRequired,
 };
 
 const ToggleButton = ({ isOpen, onClick }) => {
