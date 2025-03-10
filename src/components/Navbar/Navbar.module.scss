@@ -76,7 +76,6 @@
     bottom: 0;
     width: min(255px, 100%);
     padding-inline-end: 0px;
-    padding-block-start: var(--navbar-height);
     transform: translateX(100%);
     transition: transform var(--ts-slow);
   }
@@ -86,6 +85,13 @@
       transform: translate(0%);
     }
   }
+}
+
+.closeMenuBtnContainer {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  min-height: var(--navbar-height);
 }
 
 .list {
@@ -125,8 +131,6 @@
 }
 
 .menuBtn {
-  z-index: 2;
-
   display: inline-flex;
   justify-content: center;
   align-items: center;

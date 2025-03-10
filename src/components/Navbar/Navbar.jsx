@@ -76,14 +76,16 @@ const Nav = ({ isOpen, onMenuClose }) => {
       aria-hidden={!isOpen}
     >
       {isSm ? null : (
-        <button
-          className={s.menuBtn}
-          tabIndex={isOpen ? 0 : -1}
-          aria-label="close menu"
-          onClick={onMenuClose}
-        >
-          <Icon name="close" aria-hidden="true" />
-        </button>
+        <div className={s.closeMenuBtnContainer}>
+          <button
+            className={s.menuBtn}
+            tabIndex={isOpen ? 0 : -1}
+            aria-label="close menu"
+            onClick={onMenuClose}
+          >
+            <Icon name="close" aria-hidden="true" />
+          </button>
+        </div>
       )}
 
       <ul className={s.list}>
@@ -115,22 +117,3 @@ Nav.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onMenuClose: PropTypes.func.isRequired,
 };
-
-// const ToggleButton = ({ isOpen, onClick }) => {
-//   const { isSm } = useMediaQueriesContext();
-
-//   return isSm ? null : (
-//     <button
-//       className={s.menuBtn}
-//       aria-label={isOpen ? "close menu" : "open menu"}
-//       onClick={onClick}
-//     >
-//       <Icon name={isOpen ? "close" : "hamburger"} aria-hidden="true" />
-//     </button>
-//   );
-// };
-
-// ToggleButton.propTypes = {
-//   isOpen: PropTypes.bool.isRequired,
-//   onClick: PropTypes.func.isRequired,
-// };
