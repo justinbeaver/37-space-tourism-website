@@ -1,4 +1,3 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -10,6 +9,7 @@ import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
 
 import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 
+import useBoolean from "@/hooks/useBoolean";
 import useClickAway from "@/hooks/useClickAway";
 import useOnKeyPress from "@/hooks/useOnKeyPress";
 import { useNavbarHeight } from "./Navbar.hooks";
@@ -20,20 +20,18 @@ import content from "./Navbar.content.json";
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, { off: closeMenu, toggle: toggleMenu }] =
+    useBoolean(false);
   const { navbarRef } = useNavbarHeight();
-
-  const handleMenuClose = () => setIsMenuOpen(false);
-  const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   return (
     <header ref={navbarRef} className={s.header}>
       <Wrapper size="lg" padding="none">
         <div className={s.headerInner}>
           <HomeLink />
-          <ToggleButton isOpen={isMenuOpen} onClick={handleToggleMenu} />
+          <ToggleButton isOpen={isMenuOpen} onClick={toggleMenu} />
           <Decoration />
-          <Nav isOpen={isMenuOpen} onMenuClose={handleMenuClose} />
+          <Nav isOpen={isMenuOpen} onMenuClose={closeMenu} />
         </div>
       </Wrapper>
     </header>
