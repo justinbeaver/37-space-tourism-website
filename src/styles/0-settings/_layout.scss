@@ -13,6 +13,7 @@
 
   --navbar-min-height: 88px;
   --navbar-height: var(--navbar-min-height);
+  --navbar-current-height: 0px; // ^ wrong naming
 
   @include above(sm) {
     --navbar-min-height: 96px;
