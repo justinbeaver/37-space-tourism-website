@@ -11,6 +11,7 @@ import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
 import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 
 import useClickAway from "@/hooks/useClickAway";
+import useOnKeyPress from "@/hooks/useOnKeyPress";
 import { useNavbarHeight } from "./Navbar.hooks";
 
 import LogoIcon from "@/assets/shared/logo.svg?react";
@@ -22,17 +23,17 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { navbarRef } = useNavbarHeight();
 
+  const handleMenuClose = () => setIsMenuOpen(false);
+  const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
+
   return (
     <header ref={navbarRef} className={s.header}>
       <Wrapper size="lg" padding="none">
         <div className={s.headerInner}>
           <HomeLink />
-          <ToggleButton
-            isOpen={isMenuOpen}
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-          />
+          <ToggleButton isOpen={isMenuOpen} onClick={handleToggleMenu} />
           <Decoration />
-          <Nav isOpen={isMenuOpen} onMenuClose={() => setIsMenuOpen(false)} />
+          <Nav isOpen={isMenuOpen} onMenuClose={handleMenuClose} />
         </div>
       </Wrapper>
     </header>
@@ -59,6 +60,7 @@ const Decoration = () => {
 const Nav = ({ isOpen, onMenuClose }) => {
   const { isSm } = useMediaQueriesContext();
   const { ref: menuRef } = useClickAway(onMenuClose);
+  useOnKeyPress("esc", onMenuClose);
   const { nav } = content;
 
   return (
