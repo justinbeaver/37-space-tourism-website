@@ -13,6 +13,7 @@ import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import PaginationCircle from "@/components/PaginationCircle/PaginationCircle";
 import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 import fetchData from "@/utils/fetchData";
+import getLongestString from "@/utils/getLongestString";
 
 import s from "./Technology.module.scss";
 
@@ -70,6 +71,9 @@ export const Content = () => {
 
 const Overview = () => {
   const { technologies, currentTechnologyIndex } = useOutletContext();
+  const longestDescription = getLongestString(
+    technologies.map((item) => item.description)
+  );
   const { name, description } = technologies[currentTechnologyIndex];
 
   return (
@@ -78,7 +82,12 @@ const Overview = () => {
         <h2 className={s.technologyTitle}>{name}</h2>
         <p>the terminology...</p>
       </header>
-      <p>{description}</p>
+      <p className={s.technologyDescription}>
+        <span className={s.longestDescription} aria-hidden="true">
+          {longestDescription}
+        </span>
+        <span>{description}</span>
+      </p>
     </div>
   );
 };

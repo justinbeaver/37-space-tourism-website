@@ -90,6 +90,19 @@
   @include text-preset-3;
 }
 
+.technologyDescription {
+  display: grid;
+  grid-template-areas: "stack";
+
+  > * {
+    grid-area: stack;
+  }
+}
+
+.longestDescription {
+  visibility: hidden;
+}
+
 .imageSliderWrapper {
   order: 1;
   height: 250px;
