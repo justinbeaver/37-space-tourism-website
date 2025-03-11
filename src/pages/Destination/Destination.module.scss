@@ -125,7 +125,10 @@
 .imageSliderWrapper {
   --_size: 150px;
 
-  width: var(--_size);
+  height: var(--_size);
+  margin-inline: calc(
+    (var(--wrapper-padding-inline) + var(--wrapper-current-padding)) * -1
+  );
 
   @include above(sm) {
     --_size: 300px;
@@ -133,5 +136,7 @@
 
   @include above(lg) {
     --_size: 480px;
+
+    margin-inline: 0px;
   }
 }

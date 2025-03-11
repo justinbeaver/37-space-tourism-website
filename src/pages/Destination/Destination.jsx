@@ -13,6 +13,7 @@ import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
 import NavItem from "@/components/NavItem/NavItem";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import DecorationLine from "@/components/DecorationLine/DecorationLine";
+import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 import fetchData from "@/utils/fetchData";
 import getLongestString from "@/utils/getLongestString";
 
@@ -72,6 +73,7 @@ export const Content = () => {
 };
 
 const Picture = () => {
+  const { isLg } = useMediaQueriesContext();
   const { destinations, currentPlanetIndex } = useOutletContext();
 
   const images = destinations.map(({ name, images }) => ({
@@ -84,7 +86,7 @@ const Picture = () => {
 
   return (
     <ImageSlider
-      transition="none"
+      transition={isLg ? "none" : "slow"}
       images={images}
       selectedImageIndex={currentPlanetIndex}
     />
