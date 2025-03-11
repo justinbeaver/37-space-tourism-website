@@ -88,15 +88,14 @@
 }
 
 .meta {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   row-gap: var(--sp-500);
-
-  @include above(sm) {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 .metaItem {
+  flex-grow: 1;
+  flex-basis: 230px;
   display: flex;
   flex-direction: column;
   row-gap: var(--sp-400);
