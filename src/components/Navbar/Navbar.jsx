@@ -81,7 +81,7 @@ const Nav = ({ isOpen, onMenuClose }) => {
         focusTrapRef.current = element;
       }}
       className={`${s.nav} ${isOpen ? s.nav__open : ""}`}
-      aria-hidden={!isOpen}
+      aria-hidden={!isSm && !isOpen}
     >
       {isSm ? null : (
         <div className={s.closeMenuBtnContainer}>
