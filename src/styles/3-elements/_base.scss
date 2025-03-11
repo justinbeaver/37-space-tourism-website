@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  position: relative;
+  position: relative; // Allows navbar positioning relative to body
   min-height: 100vh;
   min-width: var(--app-min-width);
   max-width: var(--app-max-width);
