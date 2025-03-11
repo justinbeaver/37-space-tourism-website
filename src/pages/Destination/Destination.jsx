@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   Outlet,
   Navigate,
@@ -13,6 +14,7 @@ import NavItem from "@/components/NavItem/NavItem";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import DecorationLine from "@/components/DecorationLine/DecorationLine";
 import fetchData from "@/utils/fetchData";
+import getLongestString from "@/utils/getLongestString";
 
 import s from "./Destination.module.scss";
 
@@ -110,6 +112,11 @@ const Nav = () => {
 const Overview = () => {
   const { destinations, currentPlanetIndex } = useOutletContext();
 
+  const longestDescription = useMemo(
+    () => getLongestString(destinations.map((item) => item.description)),
+    [destinations]
+  );
+
   const { name, description, distance, travel } =
     destinations[currentPlanetIndex];
 
@@ -122,7 +129,12 @@ const Overview = () => {
     <div className={s.overview}>
       <div className={s.overviewBody}>
         <h2 className={s.planetTitle}>{name}</h2>
-        <p className={s.planetDescription}>{description}</p>
+        <p className={s.planetDescription}>
+          <span className={s.longestDescription} aria-hidden="true">
+            {longestDescription}
+          </span>
+          <span>{description}</span>
+        </p>
       </div>
       <DecorationLine aria-hidden={true} />
       <section className={s.meta}>

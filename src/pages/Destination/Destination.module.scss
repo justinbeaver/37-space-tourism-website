@@ -72,8 +72,18 @@
 }
 
 .planetDescription {
+  display: grid;
+  grid-area: "stack";
   color: var(--clr-primary-300);
   @include text-preset-9;
+
+  > * {
+    grid-area: stack;
+  }
+}
+
+.longestDescription {
+  visibility: hidden;
 }
 
 .navList {
