@@ -69,7 +69,7 @@ const Decoration = () => {
 
 const Nav = ({ isOpen, onMenuClose }) => {
   const { isSm } = useMediaQueriesContext();
-  const { ref: clickAwayRef } = useClickAway(onMenuClose);
+  const [clickAwayRef] = useClickAway(onMenuClose);
   const [focusTrapRef] = useFocusTrap(isOpen);
   useOnKeyPress("esc", onMenuClose);
   const { nav } = content;
