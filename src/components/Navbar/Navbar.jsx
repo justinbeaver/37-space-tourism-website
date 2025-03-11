@@ -11,6 +11,7 @@ import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 
 import useBoolean from "@/hooks/useBoolean";
 import useClickAway from "@/hooks/useClickAway";
+import useFocusTrap from "@/hooks/useFocusTrap";
 import useOnKeyPress from "@/hooks/useOnKeyPress";
 import useDisableBodyScroll from "@/hooks/useDisableBodyScroll";
 import { useCloseMenuOnLargerScreens, useNavbarHeight } from "./Navbar.hooks";
@@ -68,13 +69,17 @@ const Decoration = () => {
 
 const Nav = ({ isOpen, onMenuClose }) => {
   const { isSm } = useMediaQueriesContext();
-  const { ref: menuRef } = useClickAway(onMenuClose);
+  const { ref: clickAwayRef } = useClickAway(onMenuClose);
+  const [focusTrapRef] = useFocusTrap(isOpen);
   useOnKeyPress("esc", onMenuClose);
   const { nav } = content;
 
   return (
     <nav
-      ref={menuRef}
+      ref={(element) => {
+        clickAwayRef.current = element;
+        focusTrapRef.current = element;
+      }}
       className={`${s.nav} ${isOpen ? s.nav__open : ""}`}
       aria-hidden={!isOpen}
     >
