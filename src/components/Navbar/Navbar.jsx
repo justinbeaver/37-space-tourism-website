@@ -12,7 +12,8 @@ import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 import useBoolean from "@/hooks/useBoolean";
 import useClickAway from "@/hooks/useClickAway";
 import useOnKeyPress from "@/hooks/useOnKeyPress";
-import { useNavbarHeight } from "./Navbar.hooks";
+import useDisableBodyScroll from "@/hooks/useDisableBodyScroll";
+import { useCloseMenuOnLargerScreens, useNavbarHeight } from "./Navbar.hooks";
 
 import LogoIcon from "@/assets/shared/logo.svg?react";
 import content from "./Navbar.content.json";
@@ -23,6 +24,8 @@ const Navbar = () => {
   const [isMenuOpen, { on: openMenu, off: closeMenu }] = useBoolean(false);
   const { isSm } = useMediaQueriesContext();
   const { navbarRef } = useNavbarHeight();
+  useDisableBodyScroll(isMenuOpen);
+  useCloseMenuOnLargerScreens(closeMenu);
 
   return (
     <header ref={navbarRef} className={s.header}>
