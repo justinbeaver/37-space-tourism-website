@@ -17,6 +17,6 @@ const useClickAway = (callback) => {
     };
   }, [callback]);
 
-  return { ref };
+  return [ref];
 };
 export default useClickAway;
