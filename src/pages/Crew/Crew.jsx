@@ -13,6 +13,7 @@ import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import PaginationDot from "@/components/PaginationDot/PaginationDot";
 import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 import fetchData from "@/utils/fetchData";
+import getLongestString from "@/utils/getLongestString";
 
 import s from "./Crew.module.scss";
 
@@ -72,6 +73,8 @@ export const Content = () => {
 const Overview = () => {
   const { members, currentMemberIndex } = useOutletContext();
 
+  const longestBioText = getLongestString(members.map((item) => item.bio));
+
   const { name, role, bio } = members[currentMemberIndex];
 
   return (
@@ -80,7 +83,12 @@ const Overview = () => {
         <h2 className={s.memberTitle}>{name}</h2>
         <p>{role}</p>
       </header>
-      <p>{bio}</p>
+      <p className={s.memberBio}>
+        <span className={s.longestBioText} aria-hidden="true">
+          {longestBioText}
+        </span>
+        <span>{bio}</span>
+      </p>
     </div>
   );
 };

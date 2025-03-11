@@ -37,7 +37,7 @@
 .overviewWrapper {
   display: flex;
   flex-direction: column;
-  row-gap: var(--sp-600);
+  row-gap: var(--sp-300);
 
   @include above(lg) {
     row-gap: normal;
@@ -77,6 +77,19 @@
 .memberTitle {
   color: var(--_title-color);
   @include text-preset-3;
+}
+
+.memberBio {
+  display: grid;
+  grid-template-areas: "stack";
+
+  > * {
+    grid-area: stack;
+  }
+}
+
+.longestBioText {
+  visibility: hidden;
 }
 
 .nav {
