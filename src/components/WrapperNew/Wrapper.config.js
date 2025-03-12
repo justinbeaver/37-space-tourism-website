@@ -1,24 +1,31 @@
+import { cva } from "class-variance-authority";
+
 import s from "./Wrapper.module.scss";
 
-const config = {
+const BASE_CLASS = "wrapper";
+
+export const config = {
   variants: {
     size: {
-      md: [s["wrapper__start--md"], s["wrapper__end--md"]],
-      lg: [s["wrapper__start--lg"], s["wrapper__end--lg"]],
-      full: [s["wrapper__start--full"], s["wrapper__end--full"]],
-      "full-lg": [s["wrapper__start--full"], s["wrapper__end--lg"]],
-      "full-md": [s["wrapper__start--full"], s["wrapper__end--md"]],
-      "lg-md": [s["wrapper__start--lg"], s["wrapper__end--md"]],
-      "md-lg": [s["wrapper__start--md"], s["wrapper__end--lg"]],
-      "md-full": [s["wrapper__start--md"], s["wrapper__end--full"]],
-      "lg-full": [s["wrapper__start--lg"], s["wrapper__end--full"]],
+      md: [s[`${BASE_CLASS}__start--md`], s[`${BASE_CLASS}__end--md`]],
+      lg: [s[`${BASE_CLASS}__start--lg`], s[`${BASE_CLASS}__end--lg`]],
+      full: [s[`${BASE_CLASS}__start--full`], s[`${BASE_CLASS}__end--full`]],
+      "full-lg": [s[`${BASE_CLASS}__start--full`], s[`${BASE_CLASS}__end--lg`]],
+      "full-md": [s[`${BASE_CLASS}__start--full`], s[`${BASE_CLASS}__end--md`]],
+      "lg-md": [s[`${BASE_CLASS}__start--lg`], s[`${BASE_CLASS}__end--md`]],
+      "md-lg": [s[`${BASE_CLASS}__start--md`], s[`${BASE_CLASS}__end--lg`]],
+      "md-full": [s[`${BASE_CLASS}__start--md`], s[`${BASE_CLASS}__end--full`]],
+      "lg-full": [s[`${BASE_CLASS}__start--lg`], s[`${BASE_CLASS}__end--full`]],
     },
     padding: {
-      default: [s["wrapper__padding--left"], s["wrapper__padding--right"]],
       none: null,
-      left: s["wrapper__padding--left"],
-      right: s["wrapper__padding--right"],
+      md: s[`${BASE_CLASS}__padding--md`],
+    },
+    pad: {
+      md: s[`${BASE_CLASS}__pad--md`],
+      lg: s[`${BASE_CLASS}__pad--lg`],
     },
   },
 };
-export default config;
+
+export const wrapperClass = cva(s[BASE_CLASS], config);
