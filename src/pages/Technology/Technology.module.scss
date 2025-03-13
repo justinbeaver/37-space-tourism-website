@@ -1,3 +1,4 @@
+@use "@/styles/1-tools/fluid" as *;
 @use "@/styles/1-tools/media-queries" as *;
 @use "@/styles/1-tools/text-preset" as *;
 
@@ -117,8 +118,7 @@
   @include above(lg) {
     grid-column: auto;
     order: 2;
-    // height: 500px; // min
-    height: 600px; // max
+    height: fluid(500px, 600px, breakpoint-lg, wrapper-lg);
     aspect-ratio: 1;
   }
 }
