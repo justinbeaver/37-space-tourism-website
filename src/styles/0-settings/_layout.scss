@@ -1,16 +1,16 @@
+@use "@/styles/0-settings/breakpoints.module" as b;
 @use "@/styles/1-tools/media-queries" as *;
 
 :root {
-  --app-min-width: 320px;
-  --app-max-width: 2400px;
-  // --app-max-width: 1440px;
+  --app-min-width: #{b.$app-min};
+  --app-max-width: #{b.$app-max};
 
-  --wrapper-sm-max-width: 512px;
-  --wrapper-md-max-width: 1120px;
-  --wrapper-lg-max-width: 1440px;
+  --wrapper-sm-max-width: #{b.$wrapper-sm};
+  --wrapper-md-max-width: #{b.$wrapper-md};
+  --wrapper-lg-max-width: #{b.$wrapper-lg};
 
-  --wrapper-max-width: 1120px;
-  --wrapper-max-width-lg: 1440px;
+  --wrapper-max-width: #{b.$wrapper-md};
+  --wrapper-max-width-lg: #{b.$wrapper-lg};
   // --wrapper-max-width: 80rem;
 
   --wrapper-padding-inline: var(--sp-500);
