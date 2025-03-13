@@ -1,17 +1,27 @@
 .wrapper {
-  --_md-max: var(--wrapper-md-max-width);
-  --_lg-max: var(--wrapper-lg-max-width);
+  --_padding: var(--wrapper-padding-inline);
+
+  --_sm-max: 512px;
+  --_md-max: 1120px;
+  --_lg-max: 1440px;
   --_full-max: 1fr;
+
+  // --_sm-max: var(--wrapper-sm-max-width);
+  // --_md-max: var(--wrapper-md-max-width);
+  // --_lg-max: var(--wrapper-md-max-width);
 
   --_column-start: auto;
   --_column-end: auto;
 
-  --_padding: 0px;
+  // Padding between sm and md is in the --_sm-current calculation already
+  --_lg-min: 0px; // Padding between md and lg
+  --_full-min: 0px; // Padding between lg and full
 
-  --_lg-min: 0px;
-  --_full-min: 0px;
-
-  --_md-current: min(var(--_md-max), 100% - var(--_padding) * 2);
+  --_sm-current: min(var(--_sm-max), 100% - var(--_padding) * 2);
+  --_md-current: min(
+    calc((100% - var(--_sm-current)) / 2 - var(--_lg-min) - var(--_full-min)),
+    calc((var(--_md-max) - var(--_sm-max)) / 2)
+  );
   --_lg-current: minmax(
     var(--_lg-min),
     calc((var(--_lg-max) - var(--_md-max)) / 2)
@@ -22,7 +32,9 @@
   grid-template-columns:
     [full-start] var(--_full-current)
     [lg-start] var(--_lg-current)
-    [md-start] var(--_md-current) [md-end]
+    [md-start] var(--_md-current)
+    [sm-start] var(--_sm-current) [sm-end]
+    var(--_md-current) [md-end]
     var(--_lg-current) [lg-end]
     var(--_full-current) [full-end];
 
@@ -31,8 +43,8 @@
     grid-column-end: var(--_column-end);
   }
 
-  &__padding--md {
-    --_padding: var(--wrapper-padding-inline);
+  &__pad--none {
+    --_padding: 0px;
   }
 
   &__pad--md {
@@ -53,6 +65,14 @@
 
   &__start--md {
     --_column-start: md;
+  }
+
+  &__start--sm {
+    --_column-start: sm;
+  }
+
+  &__end--sm {
+    --_column-end: sm;
   }
 
   &__end--md {
