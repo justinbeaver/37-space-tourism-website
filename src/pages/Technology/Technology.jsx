@@ -6,6 +6,7 @@ import {
   useParams,
 } from "react-router-dom";
 
+import Wrapper from "@/components/WrapperNew/Wrapper";
 import PageBackground from "@/components/PageBackground/PageBackground";
 import PagePadding from "@/components/PagePadding/PagePadding";
 import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
@@ -45,10 +46,12 @@ const Technology = () => {
   return (
     <PageBackground variant="technology">
       <PagePadding>
-        <h1 className={s.title}>
-          <NumerationSpan tone="muted">03</NumerationSpan>space launch 101
-        </h1>
-        <Outlet context={{ technologies, currentTechnologyIndex }} />
+        <Wrapper>
+          <h1 className={s.title}>
+            <NumerationSpan tone="muted">03</NumerationSpan>space launch 101
+          </h1>
+          <Outlet context={{ technologies, currentTechnologyIndex }} />
+        </Wrapper>
       </PagePadding>
     </PageBackground>
   );
