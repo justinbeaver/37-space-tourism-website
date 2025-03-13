@@ -1,14 +1,10 @@
 .wrapper {
   --_padding: var(--wrapper-padding-inline);
 
-  --_sm-max: 512px;
-  --_md-max: 1120px;
-  --_lg-max: 1440px;
+  --_sm-max: var(--wrapper-sm-max-width);
+  --_md-max: var(--wrapper-md-max-width);
+  --_lg-max: var(--wrapper-lg-max-width);
   --_full-max: 1fr;
-
-  // --_sm-max: var(--wrapper-sm-max-width);
-  // --_md-max: var(--wrapper-md-max-width);
-  // --_lg-max: var(--wrapper-md-max-width);
 
   --_column-start: auto;
   --_column-end: auto;
