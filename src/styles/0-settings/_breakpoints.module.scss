@@ -6,23 +6,41 @@
 // $desktop: 1200px;
 // $desktop: 900px;
 
-// $sm: 576px;
-$sm: 600px;
-$md: 900px;
-$lg: 1200px;
-// $xl: 1536px;
+$app-min: 320px;
+$app-max: 2400px;
+
+// $breakpoint-sm: 576px;
+$breakpoint-sm: 600px;
+$breakpoint-md: 900px;
+$breakpoint-lg: 1200px;
+// $breakpoint-xl: 1536px;
+
+$wrapper-sm: 512px;
+$wrapper-md: 1120px;
+$wrapper-lg: 1440px;
 
 $breakpointsMap: (
-  sm: $sm,
-  md: $md,
-  lg: $lg,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+);
+
+$fluidMap: (
+  app-min: $app-min,
+  app-max: $app-max,
+  breakpoint-sm: $breakpoint-sm,
+  breakpoint-md: $breakpoint-md,
+  breakpoint-lg: $breakpoint-lg,
+  wrapper-sm: $wrapper-sm,
+  wrapper-md: $wrapper-md,
+  wrapper-lg: $wrapper-lg,
 );
 
 :export {
   // mobile: $mobile;
   // desktop: $desktop;
 
-  sm: $sm;
-  md: $md;
-  lg: $lg;
+  sm: $breakpoint-sm;
+  md: $breakpoint-md;
+  lg: $breakpoint-lg;
 }
