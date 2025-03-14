@@ -29,6 +29,8 @@ export const loader = async () => {
   return await result;
 };
 
+const headerText = "Pick your destination";
+
 const Destination = () => {
   const destinations = useLoaderData();
   const { planetName } = useParams();
@@ -46,17 +48,20 @@ const Destination = () => {
   }
 
   return (
-    <PageBackground variant="destination">
-      <PagePadding>
-        <Wrapper>
-          <h1 className={s.title}>
-            <NumerationSpan tone="muted">01</NumerationSpan>
-            pick your destination
-          </h1>
-          <Outlet context={{ destinations, currentPlanetIndex }} />
-        </Wrapper>
-      </PagePadding>
-    </PageBackground>
+    <>
+      <title>{`${planetName} | ${headerText}`}</title>
+      <PageBackground variant="destination">
+        <PagePadding>
+          <Wrapper>
+            <h1 className={s.title}>
+              <NumerationSpan tone="muted">01</NumerationSpan>
+              {headerText}
+            </h1>
+            <Outlet context={{ destinations, currentPlanetIndex }} />
+          </Wrapper>
+        </PagePadding>
+      </PageBackground>
+    </>
   );
 };
 export default Destination;
