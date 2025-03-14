@@ -3,11 +3,7 @@ import PropTypes from "prop-types";
 import s from "./PagePadding.module.scss";
 
 const PagePadding = ({ children }) => {
-  return (
-    <div className="wrapper">
-      <section className={s.section}>{children}</section>
-    </div>
-  );
+  return <section className={s.section}>{children}</section>;
 };
 export default PagePadding;
 
