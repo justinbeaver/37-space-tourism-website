@@ -4,6 +4,7 @@ import { useNavigation } from "react-router-dom";
 import Btn from "@/components/Btn/Btn";
 import PageBackground from "@/components/PageBackground/PageBackground";
 import PagePadding from "@/components/PagePadding/PagePadding";
+import Wrapper from "@/components/Wrapper/Wrapper";
 import { useMediaQueriesContext } from "@/context/mediaQueriesContext";
 
 import s from "./Home.module.scss";
@@ -12,10 +13,12 @@ const Home = () => {
   return (
     <PageBackground variant="home">
       <PagePadding>
-        <div className={s.content}>
-          <Header />
-          <ExploreButton />
-        </div>
+        <Wrapper size="sm">
+          <div className={s.content}>
+            <Header />
+            <ExploreButton />
+          </div>
+        </Wrapper>
       </PagePadding>
     </PageBackground>
   );

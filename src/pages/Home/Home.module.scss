@@ -12,6 +12,7 @@
   }
 
   @include above(lg) {
+    grid-column: md !important;
     grid-template-columns: 1fr 1fr;
     margin-block-start: 25rem;
   }
@@ -43,7 +44,6 @@
 }
 
 .description {
-  max-width: 55ch;
   @include text-preset-9;
   text-wrap: pretty;
 }
