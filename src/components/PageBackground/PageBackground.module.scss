@@ -24,26 +24,26 @@
   }
 
   &__home {
-    --_background-image-mobile: url("@/assets/home/background-home-mobile.jpg");
-    --_background-image-tablet: url("@/assets/home/background-home-tablet.jpg");
-    --_background-image-desktop: url("@/assets/home/background-home-desktop.jpg");
+    --_background-image-mobile: url("/assets/home/background-home-mobile.jpg");
+    --_background-image-tablet: url("/assets/home/background-home-tablet.jpg");
+    --_background-image-desktop: url("/assets/home/background-home-desktop.jpg");
   }
 
   &__destination {
-    --_background-image-mobile: url("@/assets/destination/background-destination-mobile.jpg");
-    --_background-image-tablet: url("@/assets/destination/background-destination-tablet.jpg");
-    --_background-image-desktop: url("@/assets/destination/background-destination-desktop.jpg");
+    --_background-image-mobile: url("/assets/destination/background-destination-mobile.jpg");
+    --_background-image-tablet: url("/assets/destination/background-destination-tablet.jpg");
+    --_background-image-desktop: url("/assets/destination/background-destination-desktop.jpg");
   }
 
   &__crew {
-    --_background-image-mobile: url("@/assets/crew/background-crew-mobile.jpg");
-    --_background-image-tablet: url("@/assets/crew/background-crew-tablet.jpg");
-    --_background-image-desktop: url("@/assets/crew/background-crew-desktop.jpg");
+    --_background-image-mobile: url("/assets/crew/background-crew-mobile.jpg");
+    --_background-image-tablet: url("/assets/crew/background-crew-tablet.jpg");
+    --_background-image-desktop: url("/assets/crew/background-crew-desktop.jpg");
   }
 
   &__technology {
-    --_background-image-mobile: url("@/assets/technology/background-technology-mobile.jpg");
-    --_background-image-tablet: url("@/assets/technology/background-technology-tablet.jpg");
-    --_background-image-desktop: url("@/assets/technology/background-technology-desktop.jpg");
+    --_background-image-mobile: url("/assets/technology/background-technology-mobile.jpg");
+    --_background-image-tablet: url("/assets/technology/background-technology-tablet.jpg");
+    --_background-image-desktop: url("/assets/technology/background-technology-desktop.jpg");
   }
 }
