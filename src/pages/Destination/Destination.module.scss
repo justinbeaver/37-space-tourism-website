@@ -21,7 +21,9 @@
 }
 
 .content {
+  grid-column: full !important;
   display: grid;
+  grid-template-columns: subgrid;
   justify-items: center;
   row-gap: var(--sp-900);
   text-align: center;
@@ -31,19 +33,26 @@
   }
 
   @include above(lg) {
+    grid-column: md !important;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
     column-gap: 6.25rem;
     text-align: start;
   }
 }
 
 .overviewWrapper {
+  grid-column: sm;
   display: flex;
   flex-direction: column;
   row-gap: var(--sp-500);
 
   @include above(sm) {
     row-gap: var(--sp-700);
+  }
+
+  @include above(lg) {
+    grid-column: auto;
   }
 }
 
@@ -52,7 +61,6 @@
   display: flex;
   flex-direction: column;
   row-gap: var(--sp-500);
-  max-width: 45ch;
 
   @include above(lg) {
     row-gap: var(--sp-700);
@@ -125,10 +133,8 @@
 .imageSliderWrapper {
   --_size: 150px;
 
+  grid-column: full;
   height: var(--_size);
-  margin-inline: calc(
-    (var(--wrapper-padding-inline) + var(--wrapper-current-padding)) * -1
-  );
 
   @include above(sm) {
     --_size: 300px;
@@ -137,6 +143,6 @@
   @include above(lg) {
     --_size: 480px;
 
-    margin-inline: 0px;
+    grid-column: auto;
   }
 }
