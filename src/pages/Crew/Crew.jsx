@@ -27,6 +27,8 @@ export const loader = async () => {
   return await result;
 };
 
+const headingText = "Meet your crew";
+
 const Crew = () => {
   const members = useLoaderData();
   const { memberName } = useParams();
@@ -44,17 +46,20 @@ const Crew = () => {
   }
 
   return (
-    <PageBackground variant="crew">
-      <PagePadding>
-        <Wrapper>
-          <h1 className={s.title}>
-            <NumerationSpan tone="muted">02</NumerationSpan>
-            meet your crew
-          </h1>
-          <Outlet context={{ members, currentMemberIndex }} />
-        </Wrapper>
-      </PagePadding>
-    </PageBackground>
+    <>
+      <title>{`${memberName} | ${headingText}`}</title>
+      <PageBackground variant="crew">
+        <PagePadding>
+          <Wrapper>
+            <h1 className={s.title}>
+              <NumerationSpan tone="muted">02</NumerationSpan>
+              {headingText}
+            </h1>
+            <Outlet context={{ members, currentMemberIndex }} />
+          </Wrapper>
+        </PagePadding>
+      </PageBackground>
+    </>
   );
 };
 export default Crew;
