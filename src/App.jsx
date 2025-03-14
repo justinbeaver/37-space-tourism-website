@@ -1,12 +1,13 @@
-import Navbar from "@/components/Navbar/Navbar";
-// import Home from "@/pages/Home/Home";
+import { RouterProvider } from "react-router-dom";
+
+import router from "@/routes";
+import { MediaQueriesProvider } from "@/context/mediaQueriesContext";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      {/* <Home /> */}
-    </>
+    <MediaQueriesProvider>
+      <RouterProvider router={router} />
+    </MediaQueriesProvider>
   );
 }
 

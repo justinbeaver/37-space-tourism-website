@@ -1,9 +1,11 @@
 html {
   // background-color: rgb(180, 180, 180);
-  background-color: var(--clr-neutral-100);
+  // background-color: var(--clr-neutral-100);
+  background-color: var(--clr-primary-900);
 }
 
 body {
+  position: relative; // Allows navbar positioning relative to body
   min-height: 100vh;
   min-width: var(--app-min-width);
   max-width: var(--app-max-width);

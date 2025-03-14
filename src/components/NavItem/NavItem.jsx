@@ -1,33 +1,30 @@
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
+import { cva } from "class-variance-authority";
 
 import config from "./NavItem.config";
 
 import s from "./NavItem.module.scss";
 
-const NavItem = ({
-  href,
-  underline = "bottom",
-  isActive,
-  children,
-  ...rest
-}) => {
+const navItemClass = cva(s.navItem, config);
+
+const NavItem = ({ to, underline = "bottom", children, ...rest }) => {
   return (
-    <a
-      className={`${s.navItem} ${
-        config.underline[underline] ? config.underline[underline] : ""
-      } ${isActive ? s.navItem__active : ""}`}
-      href={href}
+    <NavLink
+      to={to}
+      className={({ isActive, isPending }) =>
+        navItemClass({ underline, active: isActive, pending: isPending })
+      }
       {...rest}
     >
       {children}
-    </a>
+    </NavLink>
   );
 };
 export default NavItem;
 
 NavItem.propTypes = {
-  href: PropTypes.string.isRequired,
-  underline: PropTypes.oneOf(Object.keys(config.underline)),
-  isActive: PropTypes.bool,
+  to: PropTypes.string,
+  underline: PropTypes.oneOf(Object.keys(config.variants.underline)),
   children: PropTypes.node,
 };

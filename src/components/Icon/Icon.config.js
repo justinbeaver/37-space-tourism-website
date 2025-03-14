@@ -1,6 +1,8 @@
-import Facebook from "@/assets/icons/icon-facebook.svg?react";
+import Close from "@/assets/shared/icon-close.svg?react";
+import Hamburger from "@/assets/shared/icon-hamburger.svg?react";
 
 const iconsMap = {
-  facebook: Facebook,
+  close: Close,
+  hamburger: Hamburger,
 };
 export default iconsMap;

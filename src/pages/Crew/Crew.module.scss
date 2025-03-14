@@ -1,0 +1,125 @@
+@use "@/styles/1-tools/media-queries" as *;
+@use "@/styles/1-tools/text-preset" as *;
+
+.title {
+  --_margin-block-end: var(--sp-900);
+  --_title-color: var(--clr-neutral-100);
+
+  margin-block-end: var(--_margin-block-end);
+  color: var(--_title-color);
+  @include text-preset-5;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include above(sm) {
+    --_margin-block-end: 4rem;
+
+    text-align: start;
+  }
+}
+
+.content {
+  grid-column: full !important;
+  display: grid;
+  grid-template-columns: subgrid;
+  justify-items: center;
+  row-gap: var(--sp-500);
+
+  @include above(sm) {
+    row-gap: var(--sp-600);
+  }
+
+  @include above(lg) {
+    grid-column: md !important;
+    // grid-template-columns: 1fr 0.8fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--sp-600);
+    margin-block-end: calc(var(--sp-900) * -1);
+  }
+}
+
+.overviewWrapper {
+  grid-column: sm;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-300);
+
+  @include above(lg) {
+    grid-column: auto;
+    row-gap: normal;
+  }
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-500);
+  color: var(--clr-primary-300);
+  @include text-preset-9;
+  text-align: center;
+
+  @include above(lg) {
+    margin-block: auto;
+    text-align: start;
+  }
+}
+
+.memberHeader {
+  --_title-color: var(--clr-neutral-100);
+
+  display: flex;
+  flex-direction: column-reverse;
+  row-gap: var(--sp-300);
+  color: hsl(from var(--_title-color) h s l / 50%);
+  @include text-preset-4;
+  text-transform: uppercase;
+
+  @include above(sm) {
+    row-gap: var(--sp-400);
+  }
+}
+
+.memberTitle {
+  color: var(--_title-color);
+  @include text-preset-3;
+}
+
+.memberBio {
+  display: grid;
+  grid-template-areas: "stack";
+
+  > * {
+    grid-area: stack;
+  }
+}
+
+.longestBioText {
+  visibility: hidden;
+}
+
+.nav {
+  @include above(lg) {
+    margin-inline-end: auto;
+    transform: translateY(-100%);
+  }
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-400);
+}
+
+.imageSliderWrapper {
+  grid-column: full;
+  height: 355px;
+
+  @include above(sm) {
+    height: 530px;
+  }
+
+  @include above(lg) {
+    grid-column: auto;
+    height: 660px;
+  }
+}

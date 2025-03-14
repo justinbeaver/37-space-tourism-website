@@ -1,39 +1,64 @@
+@use "@/styles/2-generic/animations";
+
 .btn {
+  --_padding: 0em;
   --_background-color: transparent;
-  --_background-color-hover: transparent;
+  --_color: var(--clr-primary-900);
+  --_font-size: inherit;
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  // aspect-ratio: 1;
-  padding-inline: 2.5em;
-  padding-block: 1em;
+  aspect-ratio: 1;
+  padding: var(--_padding);
   border: 1px solid transparent;
-  border-radius: var(--br-pill);
+  border-radius: var(--br-circle);
   background-color: var(--_background-color);
-  font-weight: var(--fw-semi-bold);
+  color: var(--_color);
+  font-family: var(--ff-accent);
+  font-size: var(--_font-size);
+  font-weight: var(--fw-regular);
   line-height: 1.1;
   text-align: center;
   text-decoration: none;
+  transition: box-shadow var(--ts-slow), color var(--ts-fast),
+    transform var(--ts-fast);
   cursor: pointer;
 
   &:hover,
   &:focus-visible {
-    background-color: var(--_background-color-hover);
+    box-shadow: 0px 0px 0px 90px hsl(from var(--_background-color) h s l / 10%);
+    color: hsl(from var(--_color) h s l / 50%);
   }
 
-  &--primary {
-    --_background-color: var(--clr-primary-300);
-    --_background-color-hover: hsl(from var(--_background-color) h s 90%);
-
-    color: var(--clr-neutral-100);
+  &:active {
+    transform: scale(var(--active-scale-factor));
   }
 
-  &[disabled] {
-    --_background-color: var(--clr-primary-300);
-    --_background-color-hover: var(--clr-primary-300);
-
-    opacity: var(--opacity-disabled);
-    cursor: not-allowed;
+  &__primary {
+    --_background-color: var(--clr-neutral-100);
+    --_color: var(--clr-primary-900);
   }
+
+  &__md {
+    --_padding: 1.4em;
+    --_font-size: var(--fs-400);
+  }
+
+  &__lg {
+    --_padding: 1.6em;
+    --_font-size: var(--fs-600);
+  }
+
+  &__pending {
+    animation: blinker 2.5s linear infinite;
+  }
+
+  // &[disabled] {
+  //   --_background-color: var(--clr-primary-300);
+  //   --_background-color-hover: var(--clr-primary-300);
+
+  //   opacity: var(--opacity-disabled);
+  //   cursor: not-allowed;
+  // }
 }

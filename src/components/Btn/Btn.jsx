@@ -1,44 +1,45 @@
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { cva } from "class-variance-authority";
+
+import config from "./Btn.config";
 
 import s from "./Btn.module.scss";
 
-const btnClassesMap = {
-  primary: s["btn--primary"],
-};
+const btnClass = cva(s.btn, config);
 
-const getBtnClass = (variant) => {
-  const baseClass = s.btn;
-  const modifier = btnClassesMap[variant] || "";
-
-  return `${baseClass} ${modifier}`;
-};
-
-export const Btn = ({
-  variant = "primary",
-  href,
-  className,
+const Btn = ({
+  to,
+  variant,
+  size,
+  isPending = false,
+  className = "",
   children,
-  onClick,
   ...rest
 }) => {
-  const ElementType = href ? "a" : "button";
+  const ElementType = to ? Link : "button";
 
   return (
     <ElementType
-      className={getBtnClass(variant)}
-      href={href}
-      onClick={onClick}
+      to={to}
+      className={`${btnClass({
+        variant,
+        size,
+        pending: isPending,
+      })} ${className}`}
       {...rest}
     >
       {children}
     </ElementType>
   );
 };
+export default Btn;
 
 Btn.propTypes = {
-  variant: PropTypes.oneOf(Object.keys(btnClassesMap)),
-  href: PropTypes.string,
+  to: PropTypes.string,
+  variant: PropTypes.oneOf(Object.keys(config.variants.variant)),
+  size: PropTypes.oneOf(Object.keys(config.variants.size)),
+  isPending: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node,
-  onClick: PropTypes.func,
 };

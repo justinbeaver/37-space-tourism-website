@@ -1,0 +1,56 @@
+@use "@/styles/1-tools/media-queries" as *;
+@use "@/styles/1-tools/text-preset" as *;
+
+.content {
+  display: grid;
+  justify-items: center;
+  row-gap: 7.5rem;
+
+  @include above(sm) {
+    row-gap: 4rem;
+    margin-block-start: 6rem;
+  }
+
+  @include above(lg) {
+    grid-column: md !important;
+    grid-template-columns: 1fr 1fr;
+    margin-block-start: 25rem;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-500);
+  color: var(--clr-primary-300);
+  text-align: center;
+
+  @include above(lg) {
+    text-align: start;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-500);
+  @include text-preset-5;
+  text-transform: uppercase;
+}
+
+.emphasized {
+  color: var(--clr-neutral-100);
+  @include text-preset-1;
+}
+
+.description {
+  @include text-preset-9;
+  text-wrap: pretty;
+}
+
+.btnWrapper {
+  @include above(lg) {
+    justify-self: end;
+    align-self: center;
+  }
+}

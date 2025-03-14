@@ -1,0 +1,51 @@
+@use "@/styles/2-generic/animations";
+
+.paginationCircle {
+  --_theme-color: var(--clr-neutral-100);
+  --_border-color: hsl(from var(--_theme-color) h s l / 25%);
+  --_background-color: transparent;
+  --_color: var(--_theme-color);
+  --_font-size: inherit;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  padding-inline: 1em;
+  border: 1px solid var(--_border-color);
+  border-radius: var(--br-circle);
+  background-color: var(--_background-color);
+  color: var(--_color);
+  font-family: var(--ff-accent);
+  font-size: var(--_font-size);
+  font-weight: var(--fw-regular);
+  line-height: 1.1;
+  text-decoration: none;
+  transition: border-color var(--ts-fast), background-color var(--ts-fast),
+    color var(--ts-fast);
+
+  &__active {
+    --_border-color: var(--_theme-color);
+    --_background-color: var(--_theme-color);
+    --_color: var(--clr-primary-900);
+  }
+
+  &:not(&__active) {
+    &:hover,
+    &:focus-visible {
+      --_border-color: var(--_theme-color);
+    }
+  }
+
+  &__pending {
+    animation: blinker 1s linear infinite;
+  }
+
+  &__sm {
+    --_font-size: var(--fs-400);
+  }
+
+  &__md {
+    --_font-size: var(--fs-600);
+  }
+}

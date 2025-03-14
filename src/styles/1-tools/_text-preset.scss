@@ -1,0 +1,71 @@
+@mixin text-preset-1 {
+  font-family: var(--ff-preset-1);
+  font-size: var(--fs-preset-1);
+  font-weight: var(--fw-preset-1);
+  line-height: var(--lh-preset-1);
+  letter-spacing: var(--ls-preset-1);
+}
+
+@mixin text-preset-2 {
+  font-family: var(--ff-preset-2);
+  font-size: var(--fs-preset-2);
+  font-weight: var(--fw-preset-2);
+  line-height: var(--lh-preset-2);
+  letter-spacing: var(--ls-preset-2);
+}
+
+@mixin text-preset-3 {
+  font-family: var(--ff-preset-3);
+  font-size: var(--fs-preset-3);
+  font-weight: var(--fw-preset-3);
+  line-height: var(--lh-preset-3);
+  letter-spacing: var(--ls-preset-3);
+}
+
+@mixin text-preset-4 {
+  font-family: var(--ff-preset-4);
+  font-size: var(--fs-preset-4);
+  font-weight: var(--fw-preset-4);
+  line-height: var(--lh-preset-4);
+  letter-spacing: var(--ls-preset-4);
+}
+
+@mixin text-preset-5 {
+  font-family: var(--ff-preset-5);
+  font-size: var(--fs-preset-5);
+  font-weight: var(--fw-preset-5);
+  line-height: var(--lh-preset-5);
+  letter-spacing: var(--ls-preset-5);
+}
+
+@mixin text-preset-6 {
+  font-family: var(--ff-preset-6);
+  font-size: var(--fs-preset-6);
+  font-weight: var(--fw-preset-6);
+  line-height: var(--lh-preset-6);
+  letter-spacing: var(--ls-preset-6);
+}
+
+@mixin text-preset-7 {
+  font-family: var(--ff-preset-7);
+  font-size: var(--fs-preset-7);
+  font-weight: var(--fw-preset-7);
+  line-height: var(--lh-preset-7);
+  letter-spacing: var(--ls-preset-7);
+}
+
+@mixin text-preset-8 {
+  font-family: var(--ff-preset-8);
+  font-size: var(--fs-preset-8);
+  font-weight: var(--fw-preset-8);
+  line-height: var(--lh-preset-8);
+  letter-spacing: var(--ls-preset-8);
+}
+
+@mixin text-preset-9 {
+  font-family: var(--ff-preset-9);
+  font-size: var(--fs-preset-9);
+  font-weight: var(--fw-preset-9);
+  line-height: var(--lh-preset-9);
+  letter-spacing: var(--ls-preset-9);
+}

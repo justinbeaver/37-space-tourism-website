@@ -1,0 +1,148 @@
+@use "@/styles/1-tools/media-queries" as *;
+@use "@/styles/1-tools/text-preset" as *;
+
+.title {
+  --_title-color: var(--clr-neutral-100);
+
+  margin-block-end: var(--sp-800);
+  color: var(--_title-color);
+  @include text-preset-5;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include above(sm) {
+    margin-block-end: 4rem;
+    text-align: start;
+  }
+
+  @include above(lg) {
+    margin-block-end: 10rem;
+  }
+}
+
+.content {
+  grid-column: full !important;
+  display: grid;
+  grid-template-columns: subgrid;
+  justify-items: center;
+  row-gap: var(--sp-900);
+  text-align: center;
+
+  @include above(sm) {
+    row-gap: 4.625rem;
+  }
+
+  @include above(lg) {
+    grid-column: md !important;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    column-gap: 6.25rem;
+    text-align: start;
+  }
+}
+
+.overviewWrapper {
+  grid-column: sm;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-500);
+
+  @include above(sm) {
+    row-gap: var(--sp-700);
+  }
+
+  @include above(lg) {
+    grid-column: auto;
+  }
+}
+
+.overview {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-500);
+
+  @include above(lg) {
+    row-gap: var(--sp-700);
+  }
+}
+
+.overviewBody {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-400);
+}
+
+.planetTitle {
+  @include text-preset-2;
+  text-transform: uppercase;
+}
+
+.planetDescription {
+  display: grid;
+  grid-area: "stack";
+  color: var(--clr-primary-300);
+  @include text-preset-9;
+
+  > * {
+    grid-area: stack;
+  }
+}
+
+.longestDescription {
+  visibility: hidden;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-600);
+  @include text-preset-8;
+
+  @include above(lg) {
+    justify-content: start;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: var(--sp-500);
+}
+
+.metaItem {
+  flex-grow: 1;
+  flex-basis: 230px;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--sp-400);
+}
+
+.metaTitle {
+  color: var(--clr-primary-300);
+  @include text-preset-7;
+  text-transform: uppercase;
+}
+
+.metaDescription {
+  @include text-preset-6;
+  text-transform: uppercase;
+}
+
+.imageSliderWrapper {
+  --_size: 150px;
+
+  grid-column: full;
+  height: var(--_size);
+
+  @include above(sm) {
+    --_size: 300px;
+  }
+
+  @include above(lg) {
+    --_size: 480px;
+
+    grid-column: auto;
+  }
+}

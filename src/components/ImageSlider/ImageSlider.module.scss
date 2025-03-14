@@ -1,0 +1,75 @@
+.imageSlider {
+  --_currentImageIndex: 0;
+  --_picture-transform: none;
+  --_transition-speed: 0s;
+  --_image-fit: contain;
+  --_image-position: inherit;
+
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  &__horizontal {
+    --_picture-transform: translateX(calc(-100% * var(--_currentImageIndex)));
+
+    flex-direction: row;
+  }
+
+  &__horizontalReverse {
+    --_picture-transform: translateX(calc(100% * var(--_currentImageIndex)));
+
+    flex-direction: row-reverse;
+  }
+
+  &__vertical {
+    --_picture-transform: translateY(calc(-100% * var(--_currentImageIndex)));
+
+    flex-direction: column;
+  }
+
+  &__verticalReverse {
+    --_picture-transform: translateY(calc(100% * var(--_currentImageIndex)));
+
+    flex-direction: column-reverse;
+  }
+
+  &__transitionNone {
+    --_transition-speed: 0s;
+  }
+
+  &__transitionSlow {
+    --_transition-speed: var(--ts-slow);
+  }
+
+  &__contain {
+    --_image-fit: contain;
+  }
+
+  &__cover {
+    --_image-fit: cover;
+  }
+
+  &__positionCenter {
+    --_image-position: center;
+  }
+
+  &__positionBottom {
+    --_image-position: bottom;
+  }
+}
+
+.picture {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  transform: var(--_picture-transform);
+  transition: transform var(--_transition-speed);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: var(--_image-fit);
+  object-position: var(--_image-position);
+}

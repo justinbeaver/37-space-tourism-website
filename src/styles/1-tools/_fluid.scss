@@ -23,8 +23,8 @@
   $min-breakpoint: "sm",
   $max-breakpoint: "md"
 ) {
-  $min-breakpoint: resolve-breakpoint($min-breakpoint, b.$breakpointsMap);
-  $max-breakpoint: resolve-breakpoint($max-breakpoint, b.$breakpointsMap);
+  $min-breakpoint: resolve-breakpoint($min-breakpoint, b.$fluidMap);
+  $max-breakpoint: resolve-breakpoint($max-breakpoint, b.$fluidMap);
 
   $slope: math.div($max-value - $min-value, $max-breakpoint - $min-breakpoint);
   $slope-to-unit: round($slope * 100); // Returns unitless value

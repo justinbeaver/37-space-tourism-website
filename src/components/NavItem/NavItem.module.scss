@@ -1,5 +1,7 @@
+@use "@/styles/2-generic/animations";
+
 .navItem {
-  --_underline-thickness: 2px; // Sets underline height
+  --_underline-thickness: 3px; // Sets underline height
   --_underline-offset: 0.3em;
   --_underline-color: transparent; // Sets default not hovered / not active color
   --_underline-color-active: var(--clr-neutral-100);
@@ -7,15 +9,18 @@
     from var(--_underline-color-active) h s l / 50%
   );
 
+  // all: unset;
   display: inline-flex;
   align-items: center; // Aligns text vertically
   gap: 0.5em;
+  min-height: var(--min-tap-target-size);
   color: var(--clr-neutral-100);
   font-weight: var(--fw-regular);
   letter-spacing: var(--ls-md);
   text-decoration: none;
   text-transform: uppercase;
   transition: border-color var(--ts-medium);
+  cursor: pointer;
 
   &__active {
     --_underline-color: var(--_underline-color-active);
@@ -28,6 +33,17 @@
         --_underline-color-hover
       ); // Changes underline color only if the item is not active
     }
+  }
+
+  &:active {
+    > * {
+      transform: scale(var(--active-scale-factor));
+      transform-origin: bottom;
+    }
+  }
+
+  &__pending {
+    animation: blinker 1s linear infinite;
   }
 
   &__underlineBottom {
