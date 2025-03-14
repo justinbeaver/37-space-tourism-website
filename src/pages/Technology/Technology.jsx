@@ -27,6 +27,8 @@ export const loader = async () => {
   return await result;
 };
 
+const headerText = "Space launch 101";
+
 const Technology = () => {
   const technologies = useLoaderData();
   const { technologyType } = useParams();
@@ -44,16 +46,20 @@ const Technology = () => {
   }
 
   return (
-    <PageBackground variant="technology">
-      <PagePadding>
-        <Wrapper>
-          <h1 className={s.title}>
-            <NumerationSpan tone="muted">03</NumerationSpan>space launch 101
-          </h1>
-          <Outlet context={{ technologies, currentTechnologyIndex }} />
-        </Wrapper>
-      </PagePadding>
-    </PageBackground>
+    <>
+      <title>{`${technologyType} | ${headerText}`}</title>
+      <PageBackground variant="technology">
+        <PagePadding>
+          <Wrapper>
+            <h1 className={s.title}>
+              <NumerationSpan tone="muted">03</NumerationSpan>
+              {headerText}
+            </h1>
+            <Outlet context={{ technologies, currentTechnologyIndex }} />
+          </Wrapper>
+        </PagePadding>
+      </PageBackground>
+    </>
   );
 };
 export default Technology;
