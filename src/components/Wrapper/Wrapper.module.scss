@@ -1,16 +1,85 @@
 .wrapper {
-  // width: 100%;
-  margin-inline: auto;
+  --_padding: var(--wrapper-padding-inline);
 
-  &__md {
-    max-width: var(--wrapper-max-width);
+  --_sm-max: var(--wrapper-sm-max-width);
+  --_md-max: var(--wrapper-md-max-width);
+  --_lg-max: var(--wrapper-lg-max-width);
+  --_full-max: 1fr;
+
+  --_column-start: auto;
+  --_column-end: auto;
+
+  // Padding between sm and md is in the --_sm-current calculation already
+  --_lg-min: 0px; // Padding between md and lg
+  --_full-min: 0px; // Padding between lg and full
+
+  --_sm-current: min(var(--_sm-max), 100% - var(--_padding) * 2);
+  --_md-current: min(
+    calc((100% - var(--_sm-current)) / 2 - var(--_lg-min) - var(--_full-min)),
+    calc((var(--_md-max) - var(--_sm-max)) / 2)
+  );
+  --_lg-current: minmax(
+    var(--_lg-min),
+    calc((var(--_lg-max) - var(--_md-max)) / 2)
+  );
+  --_full-current: minmax(var(--_full-min), var(--_full-max));
+
+  display: grid;
+  grid-template-columns:
+    [full-start] var(--_full-current)
+    [lg-start] var(--_lg-current)
+    [md-start] var(--_md-current)
+    [sm-start] var(--_sm-current) [sm-end]
+    var(--_md-current) [md-end]
+    var(--_lg-current) [lg-end]
+    var(--_full-current) [full-end];
+
+  > * {
+    grid-column-start: var(--_column-start);
+    grid-column-end: var(--_column-end);
   }
 
-  &__lg {
-    max-width: var(--wrapper-max-width-lg);
+  &__pad--none {
+    --_padding: 0px;
   }
 
-  &__padding--md {
-    padding-inline: var(--wrapper-padding-inline);
+  &__pad--md {
+    --_lg-min: var(--_padding);
+  }
+
+  &__pad--lg {
+    --_full-min: var(--_padding);
+  }
+
+  &__start--full {
+    --_column-start: full;
+  }
+
+  &__start--lg {
+    --_column-start: lg;
+  }
+
+  &__start--md {
+    --_column-start: md;
+  }
+
+  &__start--sm {
+    --_column-start: sm;
+  }
+
+  &__end--sm {
+    --_column-end: sm;
+  }
+
+  &__end--md {
+    --_column-end: md;
+  }
+
+  &__end--lg {
+    --_column-end: lg;
+  }
+
+  &__end--full {
+    --_column-end: full;
   }
 }
