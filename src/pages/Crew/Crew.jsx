@@ -8,6 +8,7 @@ import {
 
 import PageBackground from "@/components/PageBackground/PageBackground";
 import PagePadding from "@/components/PagePadding/PagePadding";
+import Wrapper from "@/components/Wrapper/Wrapper";
 import NumerationSpan from "@/components/NumerationSpan/NumerationSpan";
 import ImageSlider from "@/components/ImageSlider/ImageSlider";
 import PaginationDot from "@/components/PaginationDot/PaginationDot";
@@ -45,11 +46,13 @@ const Crew = () => {
   return (
     <PageBackground variant="crew">
       <PagePadding>
-        <h1 className={s.title}>
-          <NumerationSpan tone="muted">02</NumerationSpan>
-          meet your crew
-        </h1>
-        <Outlet context={{ members, currentMemberIndex }} />
+        <Wrapper>
+          <h1 className={s.title}>
+            <NumerationSpan tone="muted">02</NumerationSpan>
+            meet your crew
+          </h1>
+          <Outlet context={{ members, currentMemberIndex }} />
+        </Wrapper>
       </PagePadding>
     </PageBackground>
   );
