@@ -1,15 +1,12 @@
 import { RouterProvider } from "react-router-dom";
 
 import router from "@/routes";
-import { MediaQueriesProvider } from "./context/mediaQueriesContext";
-import { WrapperPaddingProvider } from "./context/wrapperPaddingContext";
+import { MediaQueriesProvider } from "@/context/mediaQueriesContext";
 
 function App() {
   return (
     <MediaQueriesProvider>
-      <WrapperPaddingProvider>
-        <RouterProvider router={router} />
-      </WrapperPaddingProvider>
+      <RouterProvider router={router} />
     </MediaQueriesProvider>
   );
 }
