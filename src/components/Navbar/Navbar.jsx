@@ -105,7 +105,7 @@ const Nav = ({ isOpen, onMenuClose }) => {
               <NavItem
                 to={href}
                 underline={isSm ? "bottom" : "right"}
-                tabIndex={isOpen ? 0 : -1}
+                tabIndex={!isSm && !isOpen ? -1 : 0}
                 onClick={onMenuClose}
               >
                 <NumerationSpan margin="none">
