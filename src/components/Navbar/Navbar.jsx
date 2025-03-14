@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -98,10 +99,9 @@ const Nav = ({ isOpen, onMenuClose }) => {
 
       <ul className={s.list}>
         {nav.map(({ label, href }, index) => (
-          <>
-            {/* TODO should return a single element */}
+          <Fragment key={index}>
             {index !== 0 && <div className={s.listSpacer} />}
-            <li key={index} className={s.listItem}>
+            <li className={s.listItem}>
               <NavItem
                 to={href}
                 underline={isSm ? "bottom" : "right"}
@@ -114,7 +114,7 @@ const Nav = ({ isOpen, onMenuClose }) => {
                 <span>{label}</span>
               </NavItem>
             </li>
-          </>
+          </Fragment>
         ))}
       </ul>
     </nav>
